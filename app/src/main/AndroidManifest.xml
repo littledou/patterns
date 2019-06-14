@@ -9,12 +9,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
         <service
-                android:name=".ManualCalculatorService"
+                android:name="cn.readsense.servicetest.test.Server"
                 android:enabled="true"
-                android:exported="true"
-                android:process=":manualremote">
+                android:process=":remote"
+                android:exported="true">
         </service>
 
         <activity android:name=".MainActivity">
