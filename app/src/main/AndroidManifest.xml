@@ -9,12 +9,7 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-
-        <service
-                android:name=".ManualCalculatorService"
-                android:enabled="true"
-                android:exported="true"
-                android:process=":manualremote">
+        <service android:name=".ManualCalculatorService">
         </service>
 
         <activity android:name=".MainActivity">
