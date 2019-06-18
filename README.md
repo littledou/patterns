@@ -11,3 +11,5 @@
 2. 使用Messenger方式来实现IBinder
 3. 使用AIDL
 4. 共享匿名内存
+
+疑问： 为什么unbindService调用后，远程方法IBinder依然可以成功调用
