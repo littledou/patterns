@@ -1,4 +1,4 @@
-package cn.readsense.pattern.singleton;
+package cn.readsense.pattern.p1singleton;
 
 /**
  * 懒汉式 - 延迟加载 -  线程不安全

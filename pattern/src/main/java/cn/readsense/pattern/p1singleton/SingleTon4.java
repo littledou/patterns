@@ -1,4 +1,4 @@
-package cn.readsense.pattern.singleton;
+package cn.readsense.pattern.p1singleton;
 
 /**
  * 双重校验锁机制-避免已经示例化的对象仍请求锁,请求锁比if判断消耗资源

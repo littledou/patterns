@@ -1,4 +1,4 @@
-package cn.readsense.pattern.singleton;
+package cn.readsense.pattern.p1singleton;
 
 /**
  * 同步锁单例模式--两种方式实现
