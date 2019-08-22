@@ -9,7 +9,7 @@ import cn.readsense.pattern.p2factory.Vehicle;
  * 负责Vehicle的实例化，符合单一职责原则
  * 用户只调用Vehicle接口，符合依赖倒置原则
  * 如果需要新加一种Vehicle类型，需要对Factory进行修改，违反开闭原则
- *
+ * <p>
  * 解决方式
  * 1.使用反射机制注册产品类和实例化
  * 2.注册产品对象，并向每个产品添加newInstance方法
@@ -17,7 +17,7 @@ import cn.readsense.pattern.p2factory.Vehicle;
 public class Simple1Factory {
 
     public enum VehicleType {
-        BIKE, CAR, TRUCK
+        CAR, TRUCK
     }
 
     public Vehicle createVehicle(VehicleType type) {
@@ -29,5 +29,11 @@ public class Simple1Factory {
             default:
                 return null;
         }
+    }
+
+
+    public static void main(String args[]){
+        Simple1Factory simple1Factory = new Simple1Factory();
+        final Vehicle instance1 = simple1Factory.createVehicle(Simple1Factory.VehicleType.CAR);
     }
 }

@@ -1,5 +1,7 @@
 package cn.readsense.pattern.p2factory.simple;
 
+import cn.readsense.pattern.p2factory.Car;
+import cn.readsense.pattern.p2factory.Truck;
 import cn.readsense.pattern.p2factory.Vehicle;
 
 import java.util.HashMap;
@@ -17,10 +19,24 @@ public class Simple2Factory {
     }
 
 
-    public Vehicle createVehicle(String vehicleId) throws IllegalAccessException, InstantiationException {
+    public Vehicle createVehicle(String vehicleId) {
         if (registeredProducts.containsKey(vehicleId)) {
-            return (Vehicle) registeredProducts.get(vehicleId).newInstance();
+            try {
+                return (Vehicle) registeredProducts.get(vehicleId).newInstance();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
         }
         return null;
+    }
+
+
+    public static void main(String args[]) {
+        Simple2Factory simple2Factory = new Simple2Factory();
+        simple2Factory.registerVehicle("car", Car.class);
+        simple2Factory.registerVehicle("truck", Truck.class);
+        final Vehicle instance2 = simple2Factory.createVehicle("car");
     }
 }
