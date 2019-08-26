@@ -1,7 +1,7 @@
 package cn.readsense.pattern.p1singleton;
 
 /**
- * 登记式，静态内部类
+ * 登记式，静态内部类,延迟加载饿汉式
  */
 public class SingleTon5 {
 

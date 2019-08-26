@@ -5,4 +5,14 @@ public class Truck extends Vehicle{
     public Vehicle getInstance() {
         return new Truck();
     }
+
+    @Override
+    public void testVehicle() {
+
+    }
+
+    @Override
+    public void setColor(String color) {
+
+    }
 }
