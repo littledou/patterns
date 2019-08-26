@@ -68,14 +68,41 @@ public class Sort {
         }
     }
 
+    /**
+     * 向有序数组中插入新的数据，初始有序数组的长度为1
+     *
+     * @param arr
+     */
+    public static void insertSort(int arr[]) {
+        int temp;
+        int length = arr.length;
+
+        for (int i = 0; i < length - 1; i++) {//选择指定index,跟他前一元素进行比较，谁大谁放后面
+
+            for (int j = i + 1; j > 0; j--) {//最多循环i-1次，插入指定index后，前i数就为有序了
+//                System.out.println("before : "+Arrays.toString(arr));
+                if (arr[j] < arr[j - 1]) {
+                    temp = arr[j - 1];
+                    arr[j - 1] = arr[j];
+                    arr[j] = temp;
+
+                }else{
+                    break;
+                }
+
+            }
+            System.out.println(Arrays.toString(arr));
+        }
+
+
+    }
+
     public static void main(String args[]) {
 
         int arr[] = new int[]{
-                29, 65, 34, 24, 56, 4, 32, 56, 78, 97
+                29, 65, 34, 97, 24, 56, 4, 32, 56, 78
         };
 
-//        bubbleSort(arr);
-
-        selectSort(arr);
+        insertSort(arr);
     }
 }
