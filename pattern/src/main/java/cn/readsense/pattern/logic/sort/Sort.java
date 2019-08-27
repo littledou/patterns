@@ -77,20 +77,39 @@ public class Sort {
         int temp;
         int length = arr.length;
 
-        for (int i = 0; i < length - 1; i++) {//选择指定index,跟他前一元素进行比较，谁大谁放后面
 
-            for (int j = i + 1; j > 0; j--) {//最多循环i-1次，插入指定index后，前i数就为有序了
-//                System.out.println("before : "+Arrays.toString(arr));
-                if (arr[j] < arr[j - 1]) {
-                    temp = arr[j - 1];
-                    arr[j - 1] = arr[j];
+//        for (int i = 0; i < length - 1; i++) {//选择指定index,跟他前一元素进行比较，谁大谁放后面
+//
+//            //从后往前比较，如果index小就交换，交换次数可能有点多
+//            for (int j = i + 1; j > 0; j--) {//最多循环i-1次，插入指定index后，前i数就为有序了
+//
+//                if (arr[j] < arr[j - 1]) {
+//                    temp = arr[j - 1];
+//                    arr[j - 1] = arr[j];
+//                    arr[j] = temp;
+//                } else {
+//                    break;
+//                }
+//            }
+//        }
+
+
+        for (int i = 1; i < length; i++) {//选择指定index,跟他前一元素进行比较，谁大谁放后面
+
+            //从前往后比较，如果index小就交换，插入一次就结束了, 必须从小往大比较才能实现这种方式，如果逆序就要重新定义比对方向
+            System.out.println("before: " + Arrays.toString(arr));
+            for (int j = 0; j < i; j++) {
+
+                if (arr[i] < arr[j]) {
+
+                    temp = arr[i];
+                    arr[i] = arr[j];
                     arr[j] = temp;
 
-                }else{
                     break;
                 }
-
             }
+
             System.out.println(Arrays.toString(arr));
         }
 
