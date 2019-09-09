@@ -1,4 +1,4 @@
-package cn.readsense.pattern.p5thread.singletosingle;
+package cn.readsense.pattern.p5_p_c.p_c_single;
 
 public class ThreadP extends Thread {
     private Producer producer;

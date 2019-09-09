@@ -1,0 +1,3 @@
+singletosingle：生产者消费者模式单对单
+
+p_c_allwait：多生产多消费：操作值-假死
