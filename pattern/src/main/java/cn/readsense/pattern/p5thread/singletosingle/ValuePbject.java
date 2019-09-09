@@ -15,6 +15,5 @@ public class ValuePbject {
 
         threadC.start();
         threadP.start();
-
     }
 }

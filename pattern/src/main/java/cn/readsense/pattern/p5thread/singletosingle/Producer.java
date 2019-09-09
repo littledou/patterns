@@ -17,6 +17,7 @@ public class Producer {
                 ValuePbject.value = value;
 
                 System.out.println("set 的值是：" + value);
+                Thread.sleep(1000);
                 lock.notify();
             }
         } catch (InterruptedException e) {

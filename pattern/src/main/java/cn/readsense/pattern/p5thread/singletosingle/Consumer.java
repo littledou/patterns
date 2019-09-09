@@ -15,6 +15,7 @@ public class Consumer {
                 }
                 System.out.println("get 的值是：" + ValuePbject.value);
                 ValuePbject.value = "";
+                Thread.sleep(1000);
                 lock.notify();
             }
         } catch (InterruptedException e) {
