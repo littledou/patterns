@@ -1,1 +1,1 @@
-include ':app', ':pattern'
+include ':app', ':pattern', ':easynet'
