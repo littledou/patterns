@@ -1,6 +1,6 @@
 package cn.readsense.easynet.okhttp
 
-class Sample {
+class SampleKT {
 
 
 
