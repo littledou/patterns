@@ -1,4 +1,4 @@
-package cn.readsense.easynet;
+package cn.readsense.vollery;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("cn.readsense.easynet", appContext.getPackageName());
+        assertEquals("cn.readsense.vollery.test", appContext.getPackageName());
     }
 }
