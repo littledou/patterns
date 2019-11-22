@@ -1,1 +1,1 @@
-include ':app', ':pattern', ':easynet', ':cameraxuse', ':vollery'
+include ':app', ':pattern', ':easynet', ':cameraxuse', ':vollery', ':MutilThread'

@@ -2,20 +2,23 @@ package cn.readsense.easynet;
 
 import org.junit.Test;
 
-import cn.readsense.easynet.java.HttpGET;
-
 public class NetV1UnitTest {
 
     @Test
     public void run() {
-//        final String message = NetUtilv1.get("https://www.v2ex.com/api/topics/hot.json");
+        String card = "10";
 
-        try {
-            final String html = HttpGET.getHtml("http://www.so.com");
+        final int anInt = Integer.parseInt(card);
+        final String hexString = Integer.toHexString(anInt);
 
-            System.out.println(html);
-        } catch (Exception e) {
-            e.printStackTrace();
+        char[] hexChar = {'0', '0', '0', '0'};
+        for (int i = 0; i < hexString.length(); i++) {
+            if (i <= 3)
+                hexChar[hexChar.length - 1 - i] = hexString.charAt(hexString.length() - i - 1);
         }
+
+        System.out.println("1a 00 " + hexChar[0] + hexChar[1] + " " + hexChar[2] + hexChar[3]);
     }
+
+
 }
