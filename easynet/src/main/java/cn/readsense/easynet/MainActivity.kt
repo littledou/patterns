@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         Thread(object : Runnable {
             override fun run() {
-
                 HttpDownLoad.downLoadFast("https://www.charlesproxy.com/assets/release/4.5.4/charles-proxy-4.5.4.dmg","/sdcard/test.dmg")
             }
 
