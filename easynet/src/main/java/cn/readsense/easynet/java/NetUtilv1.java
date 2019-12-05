@@ -54,30 +54,30 @@ public class NetUtilv1 {
     }
 
     public static String post(String url, String data) {
-        HttpURLConnection http = null;
+        HttpURLConnection conn = null;
         PrintWriter out = null;
         BufferedReader reader = null;
         try {
             //创建连接
             URL urlPost = new URL(url);
-            http = (HttpURLConnection) urlPost
+            conn = (HttpURLConnection) urlPost
                     .openConnection();
-            http.setDoOutput(true);
-            http.setDoInput(true);
-            http.setRequestMethod("POST");
-            http.setUseCaches(false);
-            http.setInstanceFollowRedirects(true);
-            http.setRequestProperty("Content-Type",
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setRequestMethod("POST");
+            conn.setUseCaches(false);
+            conn.setInstanceFollowRedirects(true);
+            conn.setRequestProperty("Content-Type",
                     "application/x-www-form-urlencoded");
             // 设置连接超时时间
-            http.setConnectTimeout(5 * 1000);
+            conn.setConnectTimeout(5 * 1000);
             //设置从主机读取数据超时
-            http.setReadTimeout(5 * 1000);
+            conn.setReadTimeout(5 * 1000);
 
-            http.connect();
+            conn.connect();
 
             //POST请求
-            OutputStreamWriter outWriter = new OutputStreamWriter(http.getOutputStream(), "utf-8");
+            OutputStreamWriter outWriter = new OutputStreamWriter(conn.getOutputStream(), "utf-8");
             out = new PrintWriter(outWriter);
             out.print(data);
             out.flush();
@@ -86,7 +86,7 @@ public class NetUtilv1 {
 
             //读取响应
             reader = new BufferedReader(new InputStreamReader(
-                    http.getInputStream()));
+                    conn.getInputStream()));
             String lines;
             StringBuffer sb = new StringBuffer("");
             while ((lines = reader.readLine()) != null) {
@@ -100,7 +100,7 @@ public class NetUtilv1 {
             e.printStackTrace();
             return null;
         } finally {
-            if (null != http) http.disconnect();
+            if (null != conn) conn.disconnect();
             if (null != out) out.close();
             try {
                 if (null != reader) reader.close();
@@ -112,9 +112,10 @@ public class NetUtilv1 {
 
     public static void main(String[] args) {
         Map<String, String> pa = new HashMap();
-        pa.put("as", "中文");
+        pa.put("account", "rsandroidtest");
+        pa.put("password", "12345678");
 
-        baseMethodBuild("http://10.1.14.13:3000/signin", pa, "POST");
+        baseMethodBuild("http://orion.readsense.cn/v1/api/sign_in", pa, "POST");
     }
 
     private static HttpURLConnection SetHttpConnection(String repUrl, String requestMethod) {
@@ -216,6 +217,7 @@ public class NetUtilv1 {
             while ((line = bufferedReader.readLine()) != null) {
                 // 将缓冲区读取到的数据追加到可变字符对象中
                 stringReturnBuilder.append(line);
+                System.out.println(line);
             }
             // 依次关闭打开的输入流
             bufferedReader.close();
