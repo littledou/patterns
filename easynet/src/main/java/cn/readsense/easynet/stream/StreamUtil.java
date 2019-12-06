@@ -6,11 +6,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
 
 public class StreamUtil {
+
+    public static void write(OutputStream outputStream, String msg) {
+        OutputStreamWriter outputStreamWriter = null;
+        try {
+            outputStreamWriter = new OutputStreamWriter(outputStream, StandardCharsets.UTF_8);
+            outputStreamWriter.write(msg);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            StreamUtil.closeStreamPipe(outputStreamWriter);
+        }
+    }
 
     public static String read(InputStream inputStream) {
         ByteArrayOutputStream outStream = null;
@@ -77,6 +90,8 @@ public class StreamUtil {
                     ((InputStream) stream).close();
                 else if (stream instanceof Writer)
                     ((Writer) stream).close();
+                else if (stream instanceof Reader)
+                    ((Reader) stream).close();
                 else throw new RuntimeException("cant close target stram");
             } catch (IOException e) {
                 e.printStackTrace();
