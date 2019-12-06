@@ -1,15 +1,17 @@
 package cn.readsense.easynet;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import java.util.HashMap;
-import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
 
-import cn.readsense.easynet.java.UCNHttp;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,19 +22,59 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String body = UCNHttp.get("ata/福利/10/1");
-                    System.out.println(body);
 
-                    Map<String, String> pa = new HashMap();
-                    pa.put("account", "rsandroidtest");
-                    pa.put("password", "12345678");
-                    body = UCNHttp.post("http://orion.readsense.cn/v1/api/sign_in", pa);
-                    System.out.println(body);
+                    Socket socket = new Socket("10.1.14.195",2019);
+//                    InputStream inputStream = socket.getInputStream();
+                    OutputStream outputStream = socket.getOutputStream();
+                    outputStream.write(("client is here : " + System.currentTimeMillis()).getBytes());
+//                    System.out.println("readfron server: "+read(inputStream));
+                    outputStream.close();
+                    socket.close();
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }).start();
 
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        StringRequest stringRequest = new StringRequest("http://gank.io/api/data/福利/10/1", new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                System.out.println(response);
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//
+//                System.out.println(error.getMessage());
+//            }
+//        });
+//        requestQueue.add(stringRequest);
+
+    }
+
+    private static String read(InputStream inputStream) {
+        ByteArrayOutputStream outStream = null;
+        try {
+            outStream = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = inputStream.read(buffer)) != -1) {
+                outStream.write(buffer, 0, len);
+            }
+            return outStream.toString("UTF-8");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (outStream != null) {
+                try {
+                    outStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return null;
     }
 }

@@ -1,17 +1,15 @@
 package cn.readsense.easynet.java;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.UUID;
+
+import cn.readsense.easynet.stream.StreamUtil;
 
 public class UCNHttp {
 
@@ -32,8 +30,9 @@ public class UCNHttp {
         return conn;
     }
 
+
     //从流中读取数据
-    public static String read(HttpURLConnection conn) {
+    private static String read(HttpURLConnection conn) {
         int responseCode = 0;// 调用此方法就不必再使用conn.connect()方法
         try {
             responseCode = conn.getResponseCode();
@@ -41,7 +40,7 @@ public class UCNHttp {
             e.printStackTrace();
         }
         log("code: " + responseCode);
-        ByteArrayOutputStream outStream = null;
+
         InputStream inputStream = null;
         try {
             if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -49,44 +48,11 @@ public class UCNHttp {
             } else {
                 inputStream = conn.getErrorStream();
             }
-
-//            // 将输入字节流对象包装成输入字符流对象，并将字符编码为UTF-8格式
-//            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-//            // 创建一个输入缓冲区对象，将要输入的字符流对象传入
-//            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-//            // 使用循环逐行读取缓冲区的数据，每次循环读入一行字符串数据赋值给line字符串变量，直到读取的行为空时标识内容读取结束循环
-//            String line;
-//            StringBuilder sb = new StringBuilder();
-//            while ((line = bufferedReader.readLine()) != null) {
-//                // 将缓冲区读取到的数据追加到可变字符对象中
-//                sb.append(line);
-//            }
-//            return sb.toString();
-
-            outStream = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = inputStream.read(buffer)) != -1) {
-                outStream.write(buffer, 0, len);
-            }
-            return outStream.toString("UTF-8");
+            return StreamUtil.read(inputStream);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (outStream != null) {
-                try {
-                    outStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            StreamUtil.closeStreamPipe(inputStream);
         }
 
         return null;

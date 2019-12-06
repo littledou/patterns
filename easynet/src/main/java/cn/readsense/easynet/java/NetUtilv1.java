@@ -111,11 +111,32 @@ public class NetUtilv1 {
     }
 
     public static void main(String[] args) {
-        Map<String, String> pa = new HashMap();
-        pa.put("account", "rsandroidtest");
-        pa.put("password", "12345678");
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        URL url = new URL("https://www.so.com");
+                        System.out.println(url.getProtocol());
+                        System.out.println(url.getHost());
+                        System.out.println(url.getPort());
+                        System.out.println(url.getFile());
 
-        baseMethodBuild("http://orion.readsense.cn/v1/api/sign_in", pa, "POST");
+                        BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()));
+                        String s;
+                        while((s=br.readLine())!=null){
+                            System.out.println(s);
+                        }
+                        br.close();
+                    } catch (MalformedURLException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }).start();
+
     }
 
     private static HttpURLConnection SetHttpConnection(String repUrl, String requestMethod) {
