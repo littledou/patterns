@@ -1,7 +1,10 @@
 package cn.readsense.easynet.java;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -9,25 +12,26 @@ import java.net.URL;
 public class HttpDownLoad {
 
 
-//    /**
+    //    /**
 //     * 单线程下载，打开网络输入流，直接将流写入文件
 //     */
-//    public static void downLoad(String path, Context context) throws IOException {
-//        URL url = new URL(path);
-//
-//        InputStream is = url.openStream();
-//
-//        final OutputStream os = context.openFileOutput("test.file", Context.MODE_PRIVATE);
-//
-//        byte[] buffer = new byte[1024];
-//
-//        int len = 0;
-//        while ((len = is.read(buffer)) > 0) {
-//            os.write(buffer, 0, len);
-//        }
-//        is.close();
-//        os.close();
-//    }
+    public static void downLoad(String path, String savepath) throws IOException {
+        URL url = new URL(path);
+
+        InputStream is = url.openStream();
+        String[] split = path.split("/");
+
+        OutputStream outputStream = new FileOutputStream(new File(savepath).getAbsolutePath() + "/" + split[split.length - 1]);
+
+        byte[] buffer = new byte[1024];
+
+        int len = 0;
+        while ((len = is.read(buffer)) > 0) {
+            outputStream.write(buffer, 0, len);
+        }
+        is.close();
+        outputStream.close();
+    }
 
     /**
      * 多线程下载
@@ -48,7 +52,7 @@ public class HttpDownLoad {
         randomAccessFile.close();
         conn.disconnect();
 
-        int threadsize = 10;
+        int threadsize = 2;
         int threadlength = filelength / threadsize;//短除，剩余部分放到最后一个线程
 
         for (int i = 0; i < threadsize; i++) {

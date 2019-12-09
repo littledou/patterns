@@ -1,14 +1,13 @@
 package cn.readsense.easynet;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.Socket;
+import cn.readsense.threadpool.base.IThreadPool;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,63 +17,71 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new Thread(new Runnable() {
+        Button btn = findViewById(R.id.button);
+
+        btn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("StaticFieldLeak")
             @Override
-            public void run() {
-                try {
+            public void onClick(View v) {
 
-                    Socket socket = new Socket("10.1.14.195",2019);
-//                    InputStream inputStream = socket.getInputStream();
-                    OutputStream outputStream = socket.getOutputStream();
-                    outputStream.write(("client is here : " + System.currentTimeMillis()).getBytes());
-//                    System.out.println("readfron server: "+read(inputStream));
-                    outputStream.close();
-                    socket.close();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                int i = 0;
+                while (i < 100) {
+                    IThreadPool.THREAD_POOL_EXECUTOR.execute(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            System.out.println("Thread id: " + Thread.currentThread().getName());
+                        }
+                    });
+                    i++;
                 }
-            }
-        }).start();
 
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        StringRequest stringRequest = new StringRequest("http://gank.io/api/data/福利/10/1", new Response.Listener<String>() {
-//            @Override
-//            public void onResponse(String response) {
-//                System.out.println(response);
-//            }
-//        }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
+//                new AsyncTask<String, Object, String>() {
+//                    @Override
+//                    protected String doInBackground(String... strings) {
+//                        String o = UCNHttp.get(strings[0]);
 //
-//                System.out.println(error.getMessage());
-//            }
-//        });
-//        requestQueue.add(stringRequest);
+//                        try {
+//                            JSONArray results = new JSONObject(o).getJSONArray("results");
+//
+//                            System.out.println("size: " + results.length() + o);
+//
+//                            for (int i = 0; i < results.length(); i++) {
+//
+//                                try {
+//                                    HttpDownLoad.downLoad(
+//                                            results.getJSONObject(i).getString("url")
+//                                            , "/sdcard/img/");
+//                                    System.out.println("download index " + i);
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//
+//
+//                            }
+//
+//
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                        return "0";
+//                    }
+//
+//                    @Override
+//                    protected void onPostExecute(String o) {
+//                        System.out.println(o);
+//                    }
+//                }.execute("http://gank.io/api/data/福利/1000/1");
+
+
+            }
+        });
+
 
     }
 
-    private static String read(InputStream inputStream) {
-        ByteArrayOutputStream outStream = null;
-        try {
-            outStream = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = inputStream.read(buffer)) != -1) {
-                outStream.write(buffer, 0, len);
-            }
-            return outStream.toString("UTF-8");
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (outStream != null) {
-                try {
-                    outStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return null;
-    }
 }
