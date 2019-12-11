@@ -2,6 +2,9 @@ package cn.readsense.easynet.stream;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,6 +16,25 @@ import java.nio.charset.StandardCharsets;
 
 public class StreamUtil {
 
+    //写入本地文件
+    public static void write(OutputStream outputStream, File file) {
+        FileInputStream fileInputStream = null;
+        try {
+            fileInputStream = new FileInputStream(file);
+
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = fileInputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            StreamUtil.closeStreamPipe(fileInputStream);
+        }
+    }
+
+    //写入字符串
     public static void write(OutputStream outputStream, String msg) {
         OutputStreamWriter outputStreamWriter = null;
         try {
@@ -20,11 +42,28 @@ public class StreamUtil {
             outputStreamWriter.write(msg);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            StreamUtil.closeStreamPipe(outputStreamWriter);
         }
     }
 
+    //读取文件
+    public static void read(InputStream inputStream, File file) {
+        FileOutputStream fileOutputStream = null;
+        try {
+            fileOutputStream = new FileOutputStream(file);
+
+            byte[] buffer = new byte[2048];
+            int len;
+            while ((len = inputStream.read(buffer)) != -1) {
+                fileOutputStream.write(buffer, 0, len);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            closeStreamPipe(fileOutputStream);
+        }
+    }
+
+    //读取字符串
     public static String read(InputStream inputStream) {
         ByteArrayOutputStream outStream = null;
         try {
@@ -37,8 +76,6 @@ public class StreamUtil {
             return outStream.toString("UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            closeStreamPipe(outStream);
         }
         return null;
     }
@@ -61,24 +98,13 @@ public class StreamUtil {
 
             }
             return sb.toString();
-
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            closeReadPipe(inputStreamReader);
-            closeReadPipe(bufferedReader);
+            closeStreamPipe(inputStreamReader);
+            closeStreamPipe(bufferedReader);
         }
         return null;
-    }
-
-    public static void closeReadPipe(Reader reader) {
-        if (reader != null) {
-            try {
-                reader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     public static void closeStreamPipe(Object stream) {

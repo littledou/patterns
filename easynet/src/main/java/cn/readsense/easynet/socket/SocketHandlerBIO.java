@@ -11,36 +11,60 @@ import cn.readsense.easynet.stream.StreamUtil;
 //BIO
 public class SocketHandlerBIO extends Thread {
     //监听的端口
-    private static int port = 55533;
+    private static int port = 6644;
     private static String host = "127.0.0.1";
     private ServerSocket serverSocket;
     private boolean end;
 
-    public SocketHandlerBIO() throws IOException {
-        serverSocket = new ServerSocket(port);
+    public SocketHandlerBIO() {
+        try {
+            serverSocket = new ServerSocket(port);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void run() {
 
+        System.out.println("服务器启动");
         while (!end) {
             try {
-                Socket socket = serverSocket.accept();
-                openSocketConn(socket);
+                Socket socket = serverSocket.accept();//服务器阻塞处
+                openSocketConn(socket);//接收到客户端连接，启动线程与客户端通信
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
         }
-
+        System.out.println("服务器关闭");
     }
 
-    void openSocketConn(Socket socket) {
+    void openSocketConn(final Socket socket) {
+        System.out.println("收到新到连接");
         if (socket != null) {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    //打开一个连接，1客户端提示关闭，2超时关闭
+
+                    System.out.println("建立连接：" + Thread.currentThread().getName());
+                    String str = null;
+
+                    while (!(str = readSocket(socket)).equals("end")) {
+                        System.out.println("client: " + str);
+                        System.out.println("server write: hi client。i recivered");
+                        writeSocket(socket, "hi client。i recivered");
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                 }
             });
@@ -63,11 +87,9 @@ public class SocketHandlerBIO extends Thread {
         try {
             outputStream = socket.getOutputStream();
             StreamUtil.write(outputStream, msg);
-            socket.shutdownOutput();
+            outputStream.flush();
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            StreamUtil.closeStreamPipe(outputStream);
         }
     }
 
@@ -78,10 +100,8 @@ public class SocketHandlerBIO extends Thread {
             return StreamUtil.read(inputStream);
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            StreamUtil.closeStreamPipe(inputStream);
         }
-        return null;
+        return "end";
     }
 }
 
