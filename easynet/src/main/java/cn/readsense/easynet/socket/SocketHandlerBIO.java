@@ -5,8 +5,8 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-
-import cn.readsense.easynet.stream.StreamUtil;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 //BIO
 public class SocketHandlerBIO extends Thread {
@@ -24,14 +24,20 @@ public class SocketHandlerBIO extends Thread {
         }
     }
 
+
+    public static void main(String[] args) {
+        SocketHandlerBIO socketHandlerBIO = new SocketHandlerBIO();
+        socketHandlerBIO.start();
+    }
+
+
     @Override
     public void run() {
-
         System.out.println("服务器启动");
         while (!end) {
             try {
                 Socket socket = serverSocket.accept();//服务器阻塞处
-                openSocketConn(socket);//接收到客户端连接，启动线程与客户端通信
+                executorService.execute(new SocketRunnable(socket));//接收到客户端连接，将连接添加至线程池
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -39,69 +45,48 @@ public class SocketHandlerBIO extends Thread {
         System.out.println("服务器关闭");
     }
 
-    void openSocketConn(final Socket socket) {
-        System.out.println("收到新到连接");
-        if (socket != null) {
-            Thread thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
+    private static ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-                    System.out.println("建立连接：" + Thread.currentThread().getName());
-                    String str = null;
 
-                    while (!(str = readSocket(socket)).equals("end")) {
-                        System.out.println("client: " + str);
-                        System.out.println("server write: hi client。i recivered");
-                        writeSocket(socket, "hi client。i recivered");
-                        try {
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+    class SocketRunnable implements Runnable {
+
+        private Socket socket;
+
+        public SocketRunnable(Socket socket) {
+            this.socket = socket;
+        }
+
+        @Override
+        public void run() {
+            System.out.println("建立连接：" + Thread.currentThread().getName());
+            try {
+                InputStream inputStream = socket.getInputStream();
+                OutputStream outputStream = socket.getOutputStream();
+
+                int len;
+                byte[] data = new byte[1024];
+                // 按字节流方式读取数据
+                while ((len = inputStream.read(data)) != -1) {
+                    String str = new String(data, 0, len);
+                    System.out.println(Thread.currentThread().getName() + " client: " + str);
+                    if (str.equals("end")) {
+                        outputStream.write("end".getBytes());
+                        break;
                     }
-
-                    try {
-                        socket.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    outputStream.write("server: reciver".getBytes());
 
                 }
-            });
-            thread.start();
+                inputStream.close();
+                outputStream.close();
+                System.out.println("end " + Thread.currentThread().getName());
+                socket.close();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
 
-    public Socket createNewSocket() {
-        try {
-            return new Socket(host, port);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    public void writeSocket(Socket socket, String msg) {
-        OutputStream outputStream = null;
-        try {
-            outputStream = socket.getOutputStream();
-            StreamUtil.write(outputStream, msg);
-            outputStream.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String readSocket(Socket socket) {
-        InputStream inputStream = null;
-        try {
-            inputStream = socket.getInputStream();
-            return StreamUtil.read(inputStream);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "end";
-    }
 }
 
