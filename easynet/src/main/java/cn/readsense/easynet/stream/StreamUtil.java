@@ -12,6 +12,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.Writer;
+import java.nio.channels.Channel;
 import java.nio.charset.StandardCharsets;
 
 public class StreamUtil {
@@ -118,6 +119,8 @@ public class StreamUtil {
                     ((Writer) stream).close();
                 else if (stream instanceof Reader)
                     ((Reader) stream).close();
+                else if (stream instanceof Channel)
+                    ((Channel) stream).close();
                 else throw new RuntimeException("cant close target stram");
             } catch (IOException e) {
                 e.printStackTrace();

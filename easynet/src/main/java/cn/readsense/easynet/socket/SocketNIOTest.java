@@ -1,17 +1,19 @@
 package cn.readsense.easynet.socket;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.channels.SocketChannel;
+import java.util.Arrays;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 import cn.readsense.easynet.stream.StreamUtil;
 
-public class SocketTest {
+public class SocketNIOTest {
     private static int port = 6644;
     private static String host = "127.0.0.1";
 
@@ -20,24 +22,36 @@ public class SocketTest {
         new Thread(new Runnable() {
             @Override
             public void run() {
+
+                ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+
+                SocketChannel socketChannel = null;
                 try {
-                    Socket socket = new Socket(host, port);
+                    socketChannel = SocketChannel.open();
+                    socketChannel.configureBlocking(false);
+                    socketChannel.connect(new InetSocketAddress(host, port));
+                    if (socketChannel.finishConnect()) {
+                        int i = 0;
+                        while (true) {
+                            TimeUnit.SECONDS.sleep(1);
+                            String info = "hi server " + i++;
+                            byteBuffer.clear();
+                            byteBuffer.put(info.getBytes());
+                            byteBuffer.flip();
+                            while (byteBuffer.hasRemaining()) {
+                                System.out.println(Arrays.toString(byteBuffer.array()));
+                                socketChannel.write(byteBuffer);
+                            }
 
-                    executorService.execute(new ReadRunnable(socket));
-
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-                    String str;
-                    System.out.println("等待输入");
-                    OutputStream outputStream = socket.getOutputStream();
-                    while (!(str = bufferedReader.readLine()).equals("end")) {
-                        outputStream.write(str.getBytes());
+                            byteBuffer.clear();
+                            socketChannel.read(byteBuffer);
+                            System.out.println(Arrays.toString(byteBuffer.array()));
+                        }
                     }
-
-                    outputStream.write(str.getBytes());
-                    StreamUtil.closeStreamPipe(outputStream);
-                    socket.close();
                 } catch (Exception e) {
                     e.printStackTrace();
+                } finally {
+                    StreamUtil.closeStreamPipe(socketChannel);
                 }
 
             }

@@ -33,6 +33,20 @@ public class HttpDownLoad {
         outputStream.close();
     }
 
+    public static void downLoadByFileChannel(String path, String savepath) throws IOException {
+        URL url = new URL(path);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        int filelength = conn.getContentLength();
+
+        String[] split = path.split("/");
+        RandomAccessFile accessFile = new RandomAccessFile(new File(savepath).getAbsolutePath() + "/" + split[split.length - 1],"rw");
+        accessFile.setLength(filelength);
+
+
+
+    }
+
     /**
      * 多线程下载
      * 1. 打开连接

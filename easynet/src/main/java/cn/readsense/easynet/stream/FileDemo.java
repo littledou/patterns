@@ -1,5 +1,9 @@
 package cn.readsense.easynet.stream;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -11,6 +15,7 @@ public class FileDemo {
 
     private static final String path = "./file.txt";
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public static void main(String[] args) throws FileNotFoundException {
 
 //        OutputStream outputStream = new FileOutputStream("./file.txt");
@@ -46,6 +51,8 @@ public class FileDemo {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
     }
 
