@@ -33,26 +33,29 @@ public class UCNHttp {
 
     //从流中读取数据
     private static String read(HttpURLConnection conn) {
-        int responseCode = 0;// 调用此方法就不必再使用conn.connect()方法
+        int responseCode = -1;// 调用此方法就不必再使用conn.connect()方法
         try {
             responseCode = conn.getResponseCode();
         } catch (IOException e) {
             e.printStackTrace();
         }
         log("code: " + responseCode);
-
-        InputStream inputStream = null;
-        try {
-            if (responseCode == HttpURLConnection.HTTP_OK) {
-                inputStream = conn.getInputStream();
-            } else {
-                inputStream = conn.getErrorStream();
+        if (responseCode != -1) {
+            InputStream inputStream = null;
+            try {
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = conn.getInputStream();
+                } else {
+                    inputStream = conn.getErrorStream();
+                }
+                return StreamUtil.read(inputStream);
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                StreamUtil.closeStreamPipe(inputStream);
             }
-            return StreamUtil.read(inputStream);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            StreamUtil.closeStreamPipe(inputStream);
+        } else {
+            return "未打开连接";
         }
 
         return null;

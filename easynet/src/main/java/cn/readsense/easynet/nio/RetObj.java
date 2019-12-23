@@ -4,6 +4,7 @@ public class RetObj {
     private float confidence;
     private String img1;
     private String img2;
+    private float mux;
 
     public RetObj(float confidence, String img1, String img2) {
         this.confidence = confidence;
@@ -33,5 +34,14 @@ public class RetObj {
 
     public void setImg2(String img2) {
         this.img2 = img2;
+    }
+
+
+    public float getMux() {
+        return mux;
+    }
+
+    public void setMux(float mux) {
+        this.mux = mux;
     }
 }

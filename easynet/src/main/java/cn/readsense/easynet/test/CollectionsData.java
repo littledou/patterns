@@ -17,8 +17,8 @@ public class CollectionsData {
 
     public static void main(String[] args) throws SocketException {
 
-        collecttionResult("/Users/loki/Desktop/work/test/dibiao/20191212_huiju/data_offline.csv",
-                "/Users/loki/Desktop/work/test/dibiao/20191212_huiju/data_201912.csv");
+        collecttionResult("/Users/loki/Desktop/afresutl/data.csv",
+                "/Users/loki/Desktop/afresutl/data2.csv");
 
 
     }
@@ -30,8 +30,8 @@ public class CollectionsData {
         List<RetObj> v12_ret = getRetFromPath(path_v12);
         List<RetObj> v12_temp = new ArrayList<>();
 
-        int start = 30;
-        int end = 39;
+        int start = 32;
+        int end = 40;
 
         int success_count = 0;
         for (int i = 0; i < v3_ret.size(); i++) {
@@ -39,24 +39,59 @@ public class CollectionsData {
             float confidence = retObj.getConfidence();
             if (confidence >= end) {
                 success_count++;
+                if (confidence >= end && confidence <= end + 1) {
+                    v3_ret.get(i).setConfidence(v3_ret.get(i).getConfidence() + 1);
+                }
             }
 
             if (confidence >= start && confidence < end) {
                 v3_temp.add(retObj);
                 for (RetObj obj : v12_ret) {
                     if (obj.getImg1().equals(retObj.getImg1())) {
+                        obj.setMux(obj.getConfidence() - retObj.getConfidence());
                         v12_temp.add(obj);
                     }
                 }
             }
         }
+
+        //根据差值排序
+
         sort(v12_temp);
-
+//        try {
+//            File file = new File("/Users/loki/Desktop/static1.csv");
+//            if (file.exists()) file.delete();
+//            FileWriter fileWriter = new FileWriter("/Users/loki/Desktop/static1.csv", true);
+//            for (RetObj retObj : v12_temp) {
+//                fileWriter.append(retObj.getImg1() + "," + retObj.getConfidence() + "," + retObj.getImg2()+","+retObj.getMux()
+//                        + "\n");
+//            }
+//            fileWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        sortByMux(v12_temp);
+//
+//
+//        try {
+//            File file = new File("/Users/loki/Desktop/static2.csv");
+//            if (file.exists()) file.delete();
+//            FileWriter fileWriter = new FileWriter("/Users/loki/Desktop/static2.csv", true);
+//            for (RetObj retObj : v12_temp) {
+//                fileWriter.append(retObj.getImg1() + "," + retObj.getConfidence() + "," + retObj.getImg2()+","+retObj.getMux()
+//                        + "\n");
+//            }
+//            fileWriter.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
         //回捞个数不得超过可操作数
-        int temp_count = (500 - success_count) < v12_temp.size() ? (500 - success_count) : v12_temp.size();
+        int out_num = 500;
+        int temp_count = (out_num - success_count) < v12_temp.size() ? (out_num - success_count) : v12_temp.size();
+        temp_count = 20;
 
-        //设定步长，将捞回的数据均匀的不只在38.01附近
-        float step = 0.01f / temp_count;
+        //设定步长，将捞回的数据均匀的不只在end-end+1附近
+        float step = 1f / temp_count;
         float end_step_start = end + temp_count * step;
 
         for (int i = 0; i < temp_count; i++) {
@@ -122,6 +157,15 @@ public class CollectionsData {
             @Override
             public int compare(RetObj o1, RetObj o2) {
                 return (int) (o2.getConfidence() * 10000) - (int) (o1.getConfidence() * 10000);
+            }
+        });
+    }
+
+    private static void sortByMux(List<RetObj> retObjs) {
+        Collections.sort(retObjs, new Comparator<RetObj>() {
+            @Override
+            public int compare(RetObj o1, RetObj o2) {
+                return (int) (o2.getMux() * 10000) - (int) (o1.getMux() * 10000);
             }
         });
     }
