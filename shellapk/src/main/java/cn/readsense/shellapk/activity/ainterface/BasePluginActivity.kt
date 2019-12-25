@@ -5,8 +5,9 @@ import android.content.res.Resources
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 
-open class BasePluginActivity : Activity(), IPluginActivity {
+open class BasePluginActivity : AppCompatActivity(), IPluginActivity {
 
     var proxyActivity: Activity? = null
     override fun attach(proxyActivity: Activity) {
