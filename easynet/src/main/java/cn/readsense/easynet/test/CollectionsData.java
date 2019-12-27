@@ -17,10 +17,56 @@ public class CollectionsData {
 
     public static void main(String[] args) throws SocketException {
 
-        collecttionResult("/Users/loki/Desktop/afresutl/data.csv",
-                "/Users/loki/Desktop/afresutl/data2.csv");
 
+    }
 
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        ListNode l3 = new ListNode(0);
+        ListNode temp = l3;
+        boolean addStep = false;
+        do {
+
+            int ret = (addStep ? 1 : 0);
+            if (l1 != null) {
+                ret += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                ret += l2.val;
+                l2 = l2.next;
+            }
+            addStep = ret > 9;
+            if (!(l1 == null && l2 == null))
+                temp.next = new ListNode(ret % 10);
+            temp = temp.next;
+        } while (l1 != null || l2 != null);
+
+        return l3.next;
+    }
+
+    public int[][] flipAndInvertImage(int[][] A) {
+        int rows = A.length;
+        int cols = A[0].length;
+        int step = cols / 2;
+        int temp = 0;
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < step; j++) {
+                temp = A[i][j] ^ 1;
+                A[i][j] = A[i][rows - j - 1] ^ 1;
+                A[i][rows - j - 1] = temp;
+            }
+        }
+        return A;
     }
 
     private static void collecttionResult(String path_v3, String path_v12) {
