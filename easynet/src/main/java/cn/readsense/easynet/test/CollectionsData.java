@@ -14,10 +14,25 @@ import java.util.List;
 import cn.readsense.easynet.nio.RetObj;
 
 public class CollectionsData {
+    static int i=1;
 
+    void ppp(){
+
+    }
     public static void main(String[] args) throws SocketException {
 
+        System.out.println(i);
+        System.out.println(Childen.i);
 
+    }
+
+    static class Childen extends CollectionsData{
+        static int i=12;
+
+        @Override
+        void ppp() {
+            super.ppp();
+        }
     }
 
     public class ListNode {

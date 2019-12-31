@@ -1,15 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.readsense.easynet.view.MyViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <cn.readsense.easynet.view.MyView
-        android:id="@+id/buttonPa"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ff0000" />
+    <Button
+        android:id="@+id/buttonHttpGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#ff0000"
+        android:text="HTTP GET" />
+
+    <Button
+        android:id="@+id/buttonOkhttpGet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ff0000"
+        android:text="OKHTTP GET" />
+
+    <Button
+        android:id="@+id/buttonOkhttpPost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ff0000"
+        android:text="OKHTTP POST" />
 
 
-</cn.readsense.easynet.view.MyViewGroup>
+</LinearLayout>
