@@ -16,4 +16,12 @@ public class SingleTon1 {
         }
         return instance;
     }
+
+    static int i =  SingleTon2.getInstance().i;
+
+    public static void main(String[] args) {
+
+        System.out.println("SingleTon1 " +i);
+    }
+
 }

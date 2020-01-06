@@ -29,5 +29,21 @@
         android:background="#ff0000"
         android:text="OKHTTP POST" />
 
+    <Button
+        android:id="@+id/buttonOkhttpPostForm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ff0000"
+        android:text="OKHTTP POST Form" />
+
+    <Button
+        android:id="@+id/buttonOkhttpPostmulti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ff0000"
+        android:text="OKHTTP POST multi" />
+
 
 </LinearLayout>

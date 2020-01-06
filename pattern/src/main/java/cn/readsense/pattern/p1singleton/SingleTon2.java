@@ -5,12 +5,19 @@ package cn.readsense.pattern.p1singleton;
  */
 public class SingleTon2 {
 
-    private static SingleTon2 instance = new SingleTon2();
-
-    private SingleTon2() {
+    static {
+        System.out.println("SingleTon2");
     }
 
-    public SingleTon2 getInstance() {
+    private static final SingleTon2 instance = new SingleTon2(1);
+
+    int i;
+
+    private SingleTon2(int i) {
+        this.i = i;
+    }
+
+    public static SingleTon2 getInstance() {
         return instance;
     }
 }
