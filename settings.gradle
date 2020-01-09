@@ -1,1 +1,1 @@
-include ':app', ':pattern', ':easynet', ':cameraxuse', ':MutilThread', ':threadpool', ':shellapk', ':pluginapk'
+include ':app', ':pattern', ':easynet', ':cameraxuse', ':MutilThread', ':threadpool', ':shellapk', ':pluginapk', ':aac'

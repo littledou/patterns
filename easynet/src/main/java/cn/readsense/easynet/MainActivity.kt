@@ -170,10 +170,7 @@ class MainActivity : AppCompatActivity() {
             .cache(Cache(File("/sdcard/cache"), 1024 * 1024 * 10))
             .build()
 
-        var request = Request.Builder().url("${baseurl}/okhttpget")
-            .header("User-Agent", "OkHttp Headers.java")
-            .addHeader("Accept", "application/json; q=0.5")
-            .addHeader("Accept", "application/vnd.github.v3+json")
+        var request = Request.Builder().url("https://www.v2ex.com/api/topics/hot.json")
             .build()
 
         val newCall = client.newCall(request)
