@@ -3,11 +3,13 @@ package cn.readsense.easynet
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import cn.readsense.easynet.java.UCNHttp
+import cn.readsense.easynet.retrofit.DartService
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
+import retrofit2.Retrofit
 import java.io.File
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -15,7 +17,7 @@ import java.util.concurrent.TimeUnit
 class MainActivity : AppCompatActivity() {
 
 
-    val baseurl: String = "http://10.1.14.192:4040"
+    val baseurl: String = "http://10.1.14.195:4040"
 
     private val client = OkHttpClient()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,6 +112,33 @@ class MainActivity : AppCompatActivity() {
             })
         }
 
+        buttonretrofitget.setOnClickListener {
+            val retrofit = Retrofit.Builder().baseUrl(baseurl).build()
+
+            val dartService = retrofit.create(DartService::class.java)
+
+
+            dartService.getMsg("dou")
+                .enqueue(object : retrofit2.Callback<ResponseBody> {
+                    override fun onFailure(
+                        call: retrofit2.Call<ResponseBody>,
+                        t: Throwable
+                    ) {
+                        println("onFailure: ${t.message}")
+                    }
+
+                    override fun onResponse(
+                        call: retrofit2.Call<ResponseBody>,
+                        response: retrofit2.Response<ResponseBody>
+                    ) {
+                        println("code: ${response.code()}, response: ${response.body()?.string()}")
+                    }
+
+                })
+
+
+        }
+
     }
 
 
@@ -136,7 +165,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun okhttpGetSample() {
-        var client = OkHttpClient.Builder().connectTimeout(1L, TimeUnit.SECONDS).build()
+        var client = OkHttpClient.Builder()
+            .connectTimeout(1L, TimeUnit.SECONDS)
+            .cache(Cache(File("/sdcard/cache"), 1024 * 1024 * 10))
+            .build()
+
         var request = Request.Builder().url("${baseurl}/okhttpget")
             .header("User-Agent", "OkHttp Headers.java")
             .addHeader("Accept", "application/json; q=0.5")
@@ -162,9 +195,5 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
-    fun testBuildClient(): Unit {
-        var request = Request.Builder().build()
-
-    }
 
 }
