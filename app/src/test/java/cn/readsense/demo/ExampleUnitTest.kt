@@ -1,4 +1,4 @@
-package cn.readsense.servicetest
+package cn.readsense.demo
 
 import org.junit.Test
 

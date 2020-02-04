@@ -11,6 +11,7 @@
             name="handler"
             type="cn.readsense.aac.handler.MyHandler" />
 
+
     </data>
 
     <LinearLayout

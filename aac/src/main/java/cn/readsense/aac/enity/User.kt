@@ -1,8 +1,13 @@
 package cn.readsense.aac.enity
 
-class User(private var firstName: String, var lastName: String){
+import androidx.databinding.ObservableField
+import androidx.databinding.ObservableInt
 
-    fun getFirstName(): String {
-        return firstName;
-    }
+class User {
+
+    val firstName = ObservableField<String>()
+    val lastName = ObservableField<String>()
+
+    val age = ObservableInt()
+
 }

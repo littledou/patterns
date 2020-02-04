@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "cn.readsense.servicetest"
+        applicationId "cn.readsense.demo"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
