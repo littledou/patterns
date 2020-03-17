@@ -2,11 +2,11 @@ package cn.readsense.demo
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -17,29 +17,29 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-
-        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-
-        var dataSet = arrayOf(
-            "Activity",
-            "IPC",
-            "View Touch",
-            "Custom View",
-            "RemoteViews",
-            "Drawable",
-            "Animation",
-            "Window WindowManager",
-            "四大组件",
-            "Handler",
-            "Thread ThreadPool",
-            "Bitmap",
-            "Dex",
-            "NDK",
-            "性能优化"
-        )
-
-        recyclerView.adapter = FuncAdapter(dataSet)
+//        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+//
+//        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+//
+//        var dataSet = arrayOf(
+//            "Activity",
+//            "IPC",
+//            "View Touch",
+//            "Custom View",
+//            "RemoteViews",
+//            "Drawable",
+//            "Animation",
+//            "Window WindowManager",
+//            "四大组件",
+//            "Handler",
+//            "Thread ThreadPool",
+//            "Bitmap",
+//            "Dex",
+//            "NDK",
+//            "性能优化"
+//        )
+//
+//        recyclerView.adapter = FuncAdapter(dataSet)
 
     }
 
@@ -70,6 +70,19 @@ class MainActivity : AppCompatActivity() {
             holder.textView.text = dataSet[position]
         }
     }
+
+    override fun onUserInteraction() {
+        super.onUserInteraction()
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        return super.onTouchEvent(event)
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
+        return super.dispatchTouchEvent(ev)
+    }
+
 
 
 }
