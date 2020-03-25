@@ -5,8 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import cn.readsense.easynet.java.UCNHttp
 import cn.readsense.easynet.retrofit.DartService
 import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.ResponseBody
+import okhttp3.*
 import retrofit2.Retrofit
+import java.io.File
+import java.io.IOException
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,9 +24,9 @@ class MainActivity : AppCompatActivity() {
             httpGetSample()
         }
 
-//        buttonOkhttpGet.setOnClickListener {
-//            okhttpGetSample()
-//        }
+        buttonOkhttpGet.setOnClickListener {
+            okhttpGetSample()
+        }
 
 //        buttonOkhttpPost.setOnClickListener {
 //
@@ -106,7 +109,8 @@ class MainActivity : AppCompatActivity() {
 //        }
 
         buttonretrofitget.setOnClickListener {
-            val retrofit = Retrofit.Builder().baseUrl(baseurl).build()
+            val retrofit = Retrofit.Builder()
+                .baseUrl(baseurl).build()
 
             val dartService = retrofit.create(DartService::class.java)
 
@@ -138,6 +142,7 @@ class MainActivity : AppCompatActivity() {
         Thread(Runnable {
             println(UCNHttp.get("${baseurl}/ucnhttpget"))
 
+
 //            val request = Request.Builder()
 //                .url("https://publicobject.com/helloworld.txt")
 //                .build()
@@ -156,33 +161,33 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-//    fun okhttpGetSample() {
-//        var client = OkHttpClient.Builder()
-//            .connectTimeout(1L, TimeUnit.SECONDS)
-//            .cache(Cache(File("/sdcard/cache"), 1024 * 1024 * 10))
-//            .build()
-//
-//        var request = Request.Builder().url("https://www.v2ex.com/api/topics/hot.json")
-//            .build()
-//
-//        val newCall = client.newCall(request)
-//
-//        newCall.enqueue(object : Callback {
-//            override fun onFailure(call: Call, e: IOException) {
-//                e.printStackTrace()
-//            }
-//
-//            override fun onResponse(call: Call, response: Response) {
-//                if (!response.isSuccessful) throw IOException("Unexpected code $response")
-//
-//                for ((name, value) in response.headers) {
+    fun okhttpGetSample() {
+        var client = OkHttpClient.Builder()
+            .connectTimeout(1L, TimeUnit.SECONDS)
+            .cache(Cache(File("/sdcard/cache"), 1024 * 1024 * 10))
+            .build()
+
+        var request = Request.Builder().url("https://www.v2ex.com/api/topics/hot.json")
+            .build()
+
+        val newCall = client.newCall(request)
+
+        newCall.enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                if (!response.isSuccessful) throw IOException("Unexpected code $response")
+
+//                for ((name, value) in response.headers()) {
 //                    println("name: $name, value: $value")
 //                }
-//
-//                println("response: ${response.body?.string()}")
-//            }
-//        })
-//    }
+
+                println("response: ${response.body()?.string()}")
+            }
+        })
+    }
 
 
 }

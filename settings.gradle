@@ -1,5 +1,5 @@
 include ':app'
 
-include ':pattern',':easynet', ':threadpool'
+//include ':pattern',':easynet', ':threadpool'
 
 //include  ':cameraxuse', ':MutilThread', ':shellapk', ':pluginapk', ':aac', ':sample'

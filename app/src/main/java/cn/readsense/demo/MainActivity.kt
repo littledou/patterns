@@ -1,13 +1,20 @@
 package cn.readsense.demo
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkManager
+import cn.readsense.demo.activity.jetpackshow.UploadWorker
+
+private const val TAG = "MainActivity"
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,29 +24,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-//        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-//
-//        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-//
-//        var dataSet = arrayOf(
-//            "Activity",
-//            "IPC",
-//            "View Touch",
-//            "Custom View",
-//            "RemoteViews",
-//            "Drawable",
-//            "Animation",
-//            "Window WindowManager",
-//            "四大组件",
-//            "Handler",
-//            "Thread ThreadPool",
-//            "Bitmap",
-//            "Dex",
-//            "NDK",
-//            "性能优化"
-//        )
-//
-//        recyclerView.adapter = FuncAdapter(dataSet)
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+
+        var dataSet = arrayOf(
+            "Jetpack",
+            "Activity",
+            "IPC",
+            "View Touch",
+            "Custom View",
+            "RemoteViews",
+            "Drawable",
+            "Animation",
+            "Window WindowManager",
+            "四大组件",
+            "Handler",
+            "Thread ThreadPool",
+            "Bitmap",
+            "Dex",
+            "NDK",
+            "性能优化"
+        )
+
+        recyclerView.adapter = FuncAdapter(dataSet)
 
     }
 
@@ -68,6 +76,21 @@ class MainActivity : AppCompatActivity() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             holder.textView.text = dataSet[position]
+            holder.textView.setOnClickListener {
+                when (position) {
+                    0 -> {
+                        val oneTimeWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>().build()
+
+                        WorkManager.getInstance(holder.textView.context).enqueue(oneTimeWorkRequest)
+                        println("push worker: thread - ${Thread.currentThread().name}")
+
+                    }
+                    else -> {
+                        Log.d(TAG, "未定义的position $position")
+                    }
+
+                }
+            }
         }
     }
 
@@ -82,7 +105,6 @@ class MainActivity : AppCompatActivity() {
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
         return super.dispatchTouchEvent(ev)
     }
-
 
 
 }

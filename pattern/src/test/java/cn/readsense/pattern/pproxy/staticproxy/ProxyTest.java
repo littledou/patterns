@@ -8,15 +8,15 @@ import cn.readsense.pattern.pproxy.dynamicproxy.ProxyFactory;
 
 public class ProxyTest {
 
-    @Test
-    public void staticProxy() {
-
-        IUserDao target = new UserDao();
-
-        UserDaoProxy userDaoProxy = new UserDaoProxy(target);
-
-        userDaoProxy.save();
-    }
+//    @Test
+//    public void staticProxy() {
+//
+//        IUserDao target = new UserDao();
+//
+//        UserDaoProxy userDaoProxy = new UserDaoProxy(target);
+//
+//        userDaoProxy.save();
+//    }
 
     @Test
     public void dynamicProxy() {
