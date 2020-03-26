@@ -1,4 +1,4 @@
-include ':app'
+include ':app', ':Alg'
 
 //include ':pattern',':easynet', ':threadpool'
 

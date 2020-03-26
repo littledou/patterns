@@ -8,9 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.work.OneTimeWorkRequestBuilder
+import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import cn.readsense.demo.activity.jetpackshow.UploadWorker
 
@@ -82,8 +84,15 @@ class MainActivity : AppCompatActivity() {
                         val oneTimeWorkRequest = OneTimeWorkRequestBuilder<UploadWorker>().build()
 
                         WorkManager.getInstance(holder.textView.context).enqueue(oneTimeWorkRequest)
+
                         println("push worker: thread - ${Thread.currentThread().name}")
 
+//                        WorkManager.getInstance(holder.textView.context).getWorkInfoByIdLiveData(oneTimeWorkRequest.id)
+//                            .observe(lifecycleOwner, Observer { workInfo ->
+//                                if (workInfo != null && workInfo.state == WorkInfo.State.SUCCEEDED) {
+//                                    println("Work finished - ${Thread.currentThread().name}")
+//                                }
+//                            })
                     }
                     else -> {
                         Log.d(TAG, "未定义的position $position")
