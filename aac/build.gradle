@@ -41,4 +41,7 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:${appcompat_version}"
 
+    implementation "androidx.lifecycle:lifecycle-runtime:$lifecycle_version"
+
+
 }
