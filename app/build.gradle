@@ -7,12 +7,13 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "cn.readsense.demo"
+        applicationId "com.daimajia.gold"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -20,6 +21,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -43,5 +45,12 @@ dependencies {
     implementation "androidx.cardview:cardview:1.0.0"
 
     implementation "androidx.work:work-runtime-ktx:$work_version"
+
+
+    implementation 'com.alibaba:arouter-api:1.5.0'
+    annotationProcessor 'com.alibaba:arouter-compiler:1.5.0'
+
+    implementation("com.squareup.okhttp3:okhttp:4.4.0")
+    implementation'com.alibaba:fastjson:1.2.68'
 
 }

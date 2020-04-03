@@ -1,10 +1,13 @@
 package cn.readsense.aac
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import cn.readsense.aac.databinding.ActivityMainBinding
+import cn.readsense.aac.room.AppDatabase
 import cn.readsense.aac.viewmodel.NameViewModel
 
 class MainActivity : AppCompatActivity() {
@@ -38,5 +41,31 @@ class MainActivity : AppCompatActivity() {
         binding.btn1.setOnClickListener {
             model.currentName.postValue("update str")
         }
+
+        Thread(Runnable {
+
+            val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java,
+                "database_itest"
+            ).build()
+
+            db.userDao().insertAll(cn.readsense.aac.room.User(1, "hongbin", "dou"))
+
+            val roomUser = db.userDao().findByName(first = "hongbin", last = "dou")
+
+            println("find user : $roomUser")
+
+            var all = db.userDao().getAll()
+            println("find user size : ${all.size}")
+
+            db.userDao().delete(roomUser)
+
+            all = db.userDao().getAll()
+            println("after delete find user size : ${all.size}")
+
+        }).start()
+
+
     }
 }

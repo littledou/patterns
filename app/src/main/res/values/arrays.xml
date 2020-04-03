@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="category">
+        <item>android|Android</item>
+        <item>ios|iOS</item>
+        <item>frontend|前端</item>
+        <item>backend|后端</item>
+        <item>product|产品</item>
+        <item>design|设计</item>
+        <item>freebie|工具资源</item>
+        <item>article|阅读</item>
+    </string-array>
+    <string-array name="dialog_choice">
+        <item>拍照</item>
+        <item>选择照片</item>
+    </string-array>
+    <string-array name="dialog_retrieve_choice">
+        <item>手机找回</item>
+        <item>邮箱找回</item>
+    </string-array>
+    <string-array name="nickname_suffix">
+        <item>同学</item>
+        <item>同志</item>
+        <item>君</item>
+        <item>酱</item>
+        <item>重名了</item>
+        <item>本尊</item>
+        <item>就是我</item>
+        <item>爱学习</item>
+        <item>正在掘金</item>
+        <item>不想说话</item>
+    </string-array>
+    <string-array name="push_action">
+        <item>collection</item>
+        <item>comment</item>
+        <item>reply</item>
+        <item>follow</item>
+        <item>vote</item>
+        <item>voteLike</item>
+        <item>commentLike</item>
+        <item>push_vote</item>
+        <item>voteComment</item>
+        <item>url</item>
+        <item>followeePost</item>
+    </string-array>
+    <string-array name="push_channels">
+        <item>push_collection</item>
+        <item>push_comment</item>
+        <item>push_reply</item>
+        <item>push_follow</item>
+        <item>push_voteLike</item>
+        <item>push_commentLike</item>
+        <item>push_article</item>
+        <item>push_vote</item>
+        <item>push_voteComment</item>
+        <item>push_url</item>
+        <item>push_followeePost</item>
+    </string-array>
+</resources>

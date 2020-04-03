@@ -1,4 +1,6 @@
-include  ':Alg',':aac'
+include ':Alg'
+include ':aac'
+include ':app'
 
 //include ':pattern',':easynet', ':threadpool'
 

@@ -1,0 +1,7 @@
+Executable : /Users/loki/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
+arguments : 
+-C
+/Users/loki/StudioProjects/patterns/aac/.cxx/cmake/debug/armeabi-v7a
+readface
+jvmArgs : 
+

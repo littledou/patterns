@@ -16,4 +16,6 @@ public class User extends BaseObservable {
         this.name = name;
         notifyPropertyChanged(BR.name);
     }
+
+
 }
