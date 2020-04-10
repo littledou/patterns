@@ -14,6 +14,9 @@ import okhttp3.OkHttpClient;
 public abstract class BaseApp extends Application implements IApp {
     public static boolean isMainActivityLived = false;
 
+
+    att
+
     private void initARouter() {
         if (!AppLogger.isRelease()) {
             ARouter.openLog();

@@ -16,9 +16,7 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
 
-        ndk {
-            abiFilters 'armeabi-v7a'
-        }
+
     }
 
     viewBinding {
@@ -33,12 +31,6 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    externalNativeBuild {
-        cmake {
-            path 'CMakeLists.txt'
         }
     }
 
