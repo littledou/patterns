@@ -7,3 +7,9 @@
 /captures
 .externalNativeBuild
 *.out
+.project
+.settings/
+*.classpath
+/Alg/bin
+*.classpath
+*.project

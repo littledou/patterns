@@ -1,12 +1,12 @@
-package cn.readsense.rscamera.alg;
+package cn.readsense.alg.java;
 
 public class Les1Search {
 
     public static void main(String[] args) {
 
-        int[] list = {1,3,5,7,9};
-        System.out.println("binary_search 5: "+binary_search(list, 5));
-        System.out.println("binary_search 4: "+binary_search(list, 4));
+        int[] list = {1, 3, 5, 7, 9};
+        System.out.println("binary_search 5: " + binary_search(list, 5));
+        System.out.println("binary_search 4: " + binary_search(list, 4));
     }
 
     /**
@@ -30,8 +30,6 @@ public class Les1Search {
         }
         return -1;
     }
-
-
 
 
 }
