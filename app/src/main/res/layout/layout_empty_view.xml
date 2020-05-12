@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/layout_empty" android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/iv_top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="150.0dip" android:maxWidth="180.0dip" android:maxHeight="180.0dip" />
-    <TextView android:textSize="14.0sp" android:textColor="?themeTextColor3" android:gravity="center_horizontal" android:id="@id/tv_content" android:paddingLeft="60.0dip" android:paddingRight="60.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="暂时没有任何内容哦\n快去和小伙伴互动起来吧~" android:lineSpacingMultiplier="1.2" />
-    <TextView android:textSize="13.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_button" android:background="@drawable/btn_send_comment" android:paddingLeft="15.0dip" android:paddingTop="12.0dip" android:paddingRight="15.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:minWidth="100.0dip" android:text="重试" />
-</LinearLayout>

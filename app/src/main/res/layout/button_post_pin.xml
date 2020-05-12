@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/iv_post_pin" android:background="?selectableItemBackgroundBorderless" android:padding="13.0dip" android:layout_width="48.0dip" android:layout_height="fill_parent" android:src="@drawable/pin_post" android:layout_alignParentRight="true"
-  xmlns:android="http://schemas.android.com/apk/res/android" />

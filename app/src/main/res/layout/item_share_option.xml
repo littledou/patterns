@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/layout_option" android:layout_width="fill_parent" style="@style/ShareDialogItemLayout"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/iv_icon" android:background="@drawable/bg_share_option_selector" android:src="@drawable/share_earth" android:scaleType="centerInside" style="@style/ShareDialogItemImage" />
-    <TextView android:id="@id/tv_label" android:text="浏览器打开" style="@style/ShareDialogItemText" />
-</LinearLayout>

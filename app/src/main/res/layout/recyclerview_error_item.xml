@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="?themeTextColor2" android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="这是一个空白的视图" />
-</LinearLayout>

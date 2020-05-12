@@ -1,5 +1,5 @@
 //include ':Alg'
-//include ':aac'
+include ':aac'
 include ':app'
 
 //include ':pattern',':easynet', ':threadpool'

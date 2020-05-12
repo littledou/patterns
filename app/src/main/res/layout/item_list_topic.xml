@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="vertical" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="75.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/iv_icon" android:layout_width="49.0dip" android:layout_height="49.0dip" android:layout_marginLeft="13.0dip" android:src="@drawable/ic_launcher" android:scaleType="centerCrop" />
-    <TextView android:textSize="16.0sp" android:textColor="?themeTextColor1" android:ellipsize="end" android:id="@id/tv_title" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="74.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="72.0dip" android:text="灵感集散" android:maxLines="1" />
-    <TextView android:textSize="13.0sp" android:textColor="?themeTextColor2" android:ellipsize="end" android:id="@id/tv_desc" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="74.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="72.0dip" android:text="分享一些有趣的、有用的知识或..." android:maxLines="1" />
-    <TextView android:textSize="13.0sp" android:textColor="?colorPrimary" android:ellipsize="end" android:gravity="center" android:layout_gravity="center|right" android:id="@id/tv_count" android:background="@drawable/rect_radius_bg" android:layout_width="50.0dip" android:layout_height="22.0dip" android:layout_marginRight="14.0dip" android:text="99+" android:maxLines="1" />
-    <include layout="@layout/line_horizontal" />
-</FrameLayout>

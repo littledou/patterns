@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/rl_tag" android:background="@color/white" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="38.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/gray_text" android:id="@id/tv_tag_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/rl_select" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-        <TextView android:textSize="12.0sp" android:textColor="@color/gray_text_light" android:id="@id/tv_follow_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_toLeftOf="@id/tv_select" android:layout_centerVertical="true" />
-        <TextView android:gravity="center_vertical" android:id="@id/tv_select" android:background="@drawable/guide_user_selector" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-</RelativeLayout>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?themeWindowBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/toolbar_height_negative"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.TabLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/tabs" android:background="?colorPrimary" android:layout_width="fill_parent" android:layout_height="43.0dip" app:tabIndicatorHeight="3.0dip" app:tabTextAppearance="@style/MyCustomTextAppearance" />
-    <android.support.v4.view.ViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>

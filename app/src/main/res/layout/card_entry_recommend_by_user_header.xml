@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="40.0dip">
-        <TextView android:textColor="?themeTextColor1" android:gravity="center_vertical" android:paddingLeft="16.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="你可能感兴趣的人" />
-        <ImageView android:id="@id/iv_close" android:background="@drawable/layout_selector_unbound" android:padding="14.0dip" android:visibility="visible" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:src="@drawable/ic_hot_home_close" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</LinearLayout>

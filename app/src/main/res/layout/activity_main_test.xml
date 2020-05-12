@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="#ffaaaaaa" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/button_notification" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="消息页面" />
-    <Button android:id="@id/button_dynamic" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="动态页面页面" />
-</LinearLayout>
