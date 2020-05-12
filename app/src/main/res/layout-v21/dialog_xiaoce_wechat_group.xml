@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/layout_root" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:id="@id/rl_blue" android:layout_width="290.0dip" android:layout_height="wrap_content" android:layout_marginTop="70.0dip" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:elevation="3.0dip">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/layout_blue" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="?themeTextColor1" android:gravity="center" android:layout_width="153.0dip" android:layout_height="28.0dip" android:layout_marginTop="22.0dip" android:text="加入作者互动群" />
+            <TextView android:textSize="12.0sp" android:textColor="?themeTextColor3" android:gravity="center" android:id="@id/tv_group_code" android:layout_width="wrap_content" android:layout_height="17.0dip" android:layout_marginTop="2.0dip" android:text="扫描二维码回复 juejinym 入群" />
+            <im.juejin.android.base.views.widgets.ShadowLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip" app:sl_dx="0.0dip" app:sl_dy="0.0dip" app:sl_shadowColor="@color/shadow" app:sl_shadowRadius="2.0dip">
+                <ImageView android:id="@id/iv_wechat_group" android:layout_width="200.0dip" android:layout_height="267.0dip" />
+            </im.juejin.android.base.views.widgets.ShadowLayout>
+            <TextView android:textSize="13.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/tv_save_img" android:background="@drawable/btn_send_comment" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:text="保存二维码到本地" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

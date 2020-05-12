@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout android:id="@id/drawer" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <im.juejin.android.base.views.statusbar.StatusBarView android:id="@id/view_statusbar_inner" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <im.juejin.android.base.views.detailscroll.DetailWebView android:scrollbarStyle="insideOverlay" android:id="@id/webview" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <FrameLayout android:id="@id/iv_loading" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <android.support.v4.widget.ContentLoadingProgressBar android:layout_gravity="center" android:layout_width="30.0dip" android:layout_height="30.0dip" style="?android:progressBarStyleLarge" />
+            </FrameLayout>
+            <LinearLayout android:orientation="vertical" android:id="@id/layout_top_tool" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <android.support.v7.widget.Toolbar android:theme="@style/ThemeOverlay.AppCompat.ActionBar" android:id="@id/toolbar" android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="56.0dip" app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar" />
+                <include layout="@layout/include_fragment_shadow" />
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/layout_bottom_tool" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/tv_buy" android:background="@drawable/rect_blue_radius" android:visibility="gone" android:layout_width="178.0dip" android:layout_height="40.0dip" android:layout_marginBottom="13.0dip" />
+                <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/shadow_line_webview_bottom" />
+                <LinearLayout android:layout_gravity="bottom" android:orientation="horizontal" android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="43.0dip">
+                    <ImageView android:id="@id/ic_pre" android:background="?selectableItemBackgroundBorderless" android:padding="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/xiaoce_tool_arrow" android:layout_weight="1.0" android:alpha="0.3" />
+                    <ImageView android:id="@id/ic_chapter" android:background="?selectableItemBackgroundBorderless" android:padding="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/xiaoce_tool_menu" android:layout_weight="1.0" />
+                    <FrameLayout android:id="@id/ic_comment" android:background="?selectableItemBackgroundBorderless" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                        <ImageView android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/xiaoce_tool_comment" />
+                        <TextView android:textSize="9.0sp" android:textColor="?themeTextColor2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/tv_comment_count" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:translationX="16.0dip" android:translationY="8.0dip" />
+                    </FrameLayout>
+                    <ImageView android:id="@id/ic_next" android:background="?selectableItemBackgroundBorderless" android:padding="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/xiaoce_tool_arrow_right" android:layout_weight="1.0" android:alpha="0.3" />
+                </LinearLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_gravity="start" android:id="@id/layout_chapter" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</android.support.v4.widget.DrawerLayout>

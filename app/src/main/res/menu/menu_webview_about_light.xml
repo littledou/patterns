@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/ic_more_horiz_white_24" android:title="菜单" app:showAsAction="always">
+        <menu>
+            <item android:id="@id/action_open_outside_about" android:title="用浏览器打开" app:showAsAction="always" />
+            <item android:id="@id/action_copy_url" android:title="复制链接" app:showAsAction="always" />
+        </menu>
+    </item>
+</menu>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?themeWindowBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:background="?colorPrimary" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="?themeToolbarTextColor" android:gravity="center" android:layout_width="wrap_content" android:layout_height="48.0dip" android:text="@string/title_feidian" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/iv_post_pin" android:padding="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/pin_post" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <android.support.v4.view.ViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

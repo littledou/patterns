@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:icon="@drawable/icon_profile_data" android:id="@id/action_user_data" android:orderInCategory="100" android:title="用户数据" app:showAsAction="always" />
+    <item android:icon="@drawable/ic_action_share_white" android:id="@id/action_share_user" android:orderInCategory="100" android:title="分享" android:iconTint="@color/white" app:showAsAction="always" />
+</menu>

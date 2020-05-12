@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:paddingLeft="22.0dip" android:paddingRight="22.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="?themeTextColor1" android:gravity="center_vertical" android:id="@id/tv_pay_wechat" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="微信支付" android:drawableLeft="@drawable/pay_wechat" android:drawablePadding="8.0dip"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+        <RadioButton android:layout_gravity="center|right" android:id="@id/rb_wechat" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <FrameLayout android:paddingLeft="22.0dip" android:paddingRight="22.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="12.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="?themeTextColor1" android:gravity="center_vertical" android:id="@id/tv_pay_alipay" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="12.0dip" android:text="支付宝支付" android:drawableLeft="@drawable/pay_alipay" android:drawablePadding="8.0dip"
+          xmlns:android="http://schemas.android.com/apk/res/android" />
+        <RadioButton android:layout_gravity="center|right" android:id="@id/rb_alipay" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+</LinearLayout>

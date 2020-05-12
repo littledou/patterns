@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/item_open_push" />
+    <FrameLayout android:orientation="vertical" android:id="@id/layout_clear_notify" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="40.0dip" android:foreground="@drawable/layout_selector_transparent">
+        <TextView android:textSize="14.0sp" android:textColor="?themeTextColor3" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/clean_unread" android:drawableLeft="@drawable/clear_notifications" android:drawablePadding="8.0dip" />
+        <include android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="0.5dip" layout="@layout/line_horizontal" />
+    </FrameLayout>
+</LinearLayout>

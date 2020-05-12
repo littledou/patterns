@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<im.juejin.android.base.views.widgets.PercentageRelativeLayout android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="109.0dip" android:layout_marginRight="6.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textStyle="bold" android:textColor="?themeTextColor1" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="?themeTextColor1" android:ellipsize="end" android:id="@id/tv_content" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:lines="3" android:layout_toLeftOf="@id/iv_image" android:layout_below="@id/tv_title" android:lineSpacingMultiplier="1.2" />
+        <ImageView android:id="@id/iv_image" android:layout_width="52.0dip" android:layout_height="52.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="10.0dip" android:scaleType="centerCrop" android:layout_below="@id/tv_title" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+</im.juejin.android.base.views.widgets.PercentageRelativeLayout>

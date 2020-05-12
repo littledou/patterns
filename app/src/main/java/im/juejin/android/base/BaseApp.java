@@ -6,16 +6,15 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.concurrent.TimeUnit;
 
+import im.juejin.android.base.network.HttpLoggingInterceptor;
 import im.juejin.android.base.network.RequestHeaderInterceptor;
 import im.juejin.android.base.utils.AppLogger;
 import im.juejin.android.common.ApplicationProvider;
+import im.juejin.android.common.netclient.JJNet;
 import okhttp3.OkHttpClient;
 
 public abstract class BaseApp extends Application implements IApp {
     public static boolean isMainActivityLived = false;
-
-
-    att
 
     private void initARouter() {
         if (!AppLogger.isRelease()) {
@@ -31,7 +30,7 @@ public abstract class BaseApp extends Application implements IApp {
 
     private void initNetClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder()
-                .callTimeout(10L, TimeUnit.SECONDS)
+                .connectTimeout(10L, TimeUnit.SECONDS)
                 .readTimeout(20L, TimeUnit.SECONDS)
                 .writeTimeout(20L, TimeUnit.SECONDS)
                 .addInterceptor(new RequestHeaderInterceptor());
@@ -39,6 +38,7 @@ public abstract class BaseApp extends Application implements IApp {
             builder.addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         JJNet.INSTANCE.setClient(builder.build());
     }
+
 
     public void onCreate() {
         super.onCreate();

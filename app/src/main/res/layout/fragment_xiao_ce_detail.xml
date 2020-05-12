@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <im.juejin.android.base.views.SlideDetailLayout android:id="@id/sdl" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="50.0dip" app:default_panel="front" app:duration="300" app:percent="0.2">
+        <android.support.v7.widget.RecyclerView android:id="@id/rv_xiaoce_detail" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <WebView android:id="@id/webview_xiaoce" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </im.juejin.android.base.views.SlideDetailLayout>
+    <LinearLayout android:layout_gravity="bottom" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/juejin_blue" android:gravity="center" android:id="@id/tv_try" android:background="@drawable/button_blue_border_selector" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="4.0dip" android:text="试读" android:layout_weight="1.0" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_buy" android:background="@drawable/btn_send_comment" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="4.0dip" android:text="购买" android:layout_weight="2.0" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/juejin_blue" android:gravity="center" android:id="@id/tv_restart_read" android:background="@drawable/button_blue_border_selector" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_margin="4.0dip" android:text="重新开始阅读" android:layout_weight="2.0" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="50.0dip" android:src="@drawable/shadow_line_webview_bottom"
+      xmlns:android="http://schemas.android.com/apk/res/android" />
+    <include layout="@layout/include_fragment_shadow" />
+    <im.juejin.android.base.views.layouts.TipView android:id="@id/tip_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

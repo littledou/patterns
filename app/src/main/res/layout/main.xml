@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/fragment_container" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:layout_gravity="bottom|center|right" android:id="@id/layout_popup" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="88.0dip" android:layout_marginBottom="58.0dip" layout="@layout/layout_popup_entry_share" />
+    <android.support.design.widget.FloatingActionButton android:layout_gravity="bottom|center|right" android:id="@id/fab" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:layout_marginBottom="64.0dip" android:src="@drawable/ic_fab_post" app:backgroundTint="@color/blue_primary" app:borderWidth="0.0dip" app:elevation="6.0dip" app:fabSize="normal" />
+</FrameLayout>

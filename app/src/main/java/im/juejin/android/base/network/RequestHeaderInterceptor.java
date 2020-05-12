@@ -17,50 +17,53 @@ import okhttp3.Response;
 public class RequestHeaderInterceptor implements Interceptor {
 
     public Response intercept(Interceptor.Chain paramChain) throws IOException {
-        Intrinsics.checkNotNullParameter(paramChain, "chain");
+        Intrinsics.checkNotNull(paramChain, "chain");
         Request request = paramChain.request();
         Request.Builder builder = request.newBuilder();
-        String str1 = UserAction.INSTANCE.getCurrentUserId();
-        String str2 = VerifyUtils.getClientId();
-        String str3 = VerifyUtils.getLocalToken();
+        String currentUserId = UserAction.INSTANCE.getCurrentUserId();
+        String clientId = VerifyUtils.getClientId();
+        String localToken = VerifyUtils.getLocalToken();
+        String android_tag = "android";
         try {
-            if (Intrinsics.areEqual(request.url().host(), (new URI("https://android-api.juejin.im/graphql")).getHost())) {
-                builder.addHeader("X-Legacy-Token", str3);
-                builder.addHeader("X-Legacy-Uid", str1);
-                builder.addHeader("X-Legacy-Device-Id", str2);
+            if (Intrinsics.areEqual(request.url().host(), new URI("https://android-api.juejin.im/graphql").getHost())) {
+                builder.addHeader("X-Legacy-Token", localToken);
+                builder.addHeader("X-Legacy-Uid", currentUserId);
+                builder.addHeader("X-Legacy-Device-Id", clientId);
                 builder.addHeader("X-Agent", SystemUtilsKt.getUA());
             } else {
-                builder.addHeader("X-Juejin-Uid", str1);
-                builder.addHeader("X-Juejin-Client", str2);
-                builder.addHeader("X-Juejin-Token", str3);
+                builder.addHeader("X-Juejin-Uid", currentUserId);
+                builder.addHeader("X-Juejin-Client", clientId);
+                builder.addHeader("X-Juejin-Token", localToken);
                 builder.addHeader("User-Agent", SystemUtilsKt.getUA());
-                builder.addHeader("X-Juejin-Src", "android");
+                builder.addHeader("X-Juejin-Src", android_tag);
                 builder.addHeader("X-Juejin-Suid", VerifyUtils.getLocalSuid());
-                builder.addHeader("X-Token", str3);
+                builder.addHeader("X-Token", localToken);
             }
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
+
         RequestBody requestBody = request.body();
-        if (requestBody instanceof FormBody) {
-            FormBody.Builder builder1 = new FormBody.Builder();
-            builder1.a("uid", str1);
-            builder1.a("token", str3);
-            builder1.a("device_id", str2);
-            builder1.a("src", "android");
-            int i = 0;
-            FormBody formBody = (FormBody)requestBody;
-            int j = formBody.a();
-            while (i < j) {
-                builder1.a(formBody.b(i), formBody.d(i));
-                i++;
+        if ((requestBody instanceof FormBody)) {
+            FormBody.Builder formbodyBuilder = new FormBody.Builder();
+            formbodyBuilder.add("uid", currentUserId);
+            formbodyBuilder.add("token", localToken);
+            formbodyBuilder.add("device_id", clientId);
+            formbodyBuilder.add("src", android_tag);
+            int v2_1 = 0;
+            int v3_1 = ((FormBody) requestBody).size();
+            while (v2_1 < v3_1) {
+                formbodyBuilder.add(((FormBody) requestBody).name(v2_1), ((FormBody) requestBody).value(v2_1));
+                ++v2_1;
             }
-            builder.a(request.b(), (RequestBody)builder1.a());
+
+            builder.method(request.method(), formbodyBuilder.build());
         } else {
-            builder.a(request.b(), requestBody);
+            builder.method(request.method(), requestBody);
         }
-        Response response = paramChain.a(builder.b());
-        Intrinsics.a(response, "chain.proceed(builder.build())");
+
+        Response response = paramChain.proceed(builder.build());
+        Intrinsics.checkFieldIsNotNull(response, "chain.proceed(builder.build())");
         return response;
     }
 }

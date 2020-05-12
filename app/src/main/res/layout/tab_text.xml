@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/pin_tab_text_selector" android:gravity="center" android:layout_gravity="center" android:id="@id/tv_text" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_centerInParent="true" />
+    <View android:id="@id/red_point" android:background="@drawable/red_point" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_centerInParent="true" android:translationX="16.0dip" android:translationY="-8.0dip" />
+    <TextView android:textSize="11.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/tv_unread" android:background="@drawable/bg_count_view" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="99+" android:layout_centerInParent="true" android:translationX="12.0dip" android:translationY="-8.0dip" />
+</RelativeLayout>

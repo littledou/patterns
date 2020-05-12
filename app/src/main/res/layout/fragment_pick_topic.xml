@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?themeWhiteBackgroundColor" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="13.0dip" android:layout_marginBottom="8.0dip">
+        <EditText android:textSize="14.0sp" android:id="@id/et_keyword" android:background="@drawable/rect_small_radius_bg" android:paddingLeft="8.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="搜索" android:maxLines="1" android:lines="1" android:drawableLeft="@drawable/ic_search" android:drawablePadding="4.0dip" android:imeOptions="actionSearch" />
+        <ImageView android:layout_gravity="right" android:id="@id/iv_close" android:padding="11.0dip" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/ic_search_close" android:alpha="0.4" />
+        <android.support.v4.widget.ContentLoadingProgressBar android:layout_gravity="center|right" android:id="@id/loading_bar" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="8.0dip" style="?android:progressBarStyle" />
+    </FrameLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <android.support.v7.widget.RecyclerView android:id="@id/recyclerView" android:fadingEdgeLength="0.0px" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+        <im.juejin.android.base.views.layouts.TipView android:id="@id/tip_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

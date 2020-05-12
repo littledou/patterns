@@ -12,221 +12,300 @@ import im.juejin.android.componentbase.typefactory.ITypeFactoryList;
 
 public class UserBean implements Parcelable, BeanType {
 
-    public static final Parcelable.Creator<UserBean> CREATOR = (Parcelable.Creator<UserBean>) new Object();
+    public class CommunityBean {
+        public class ThirdPartBean {
+            private String access_token;
+            private String avatarLarge;
+            private String blogAddress;
+            private String expiration_in;
+            private String openid;
+            private String username;
+
+            public ThirdPartBean() {
+                super();
+            }
+
+            public String getAccess_token() {
+                return this.access_token;
+            }
+
+            public String getAvatarLarge() {
+                return this.avatarLarge;
+            }
+
+            public String getBlogAddress() {
+                return this.blogAddress;
+            }
+
+            public String getExpiration_in() {
+                return this.expiration_in;
+            }
+
+            public String getOpenid() {
+                return this.openid;
+            }
+
+            public String getUsername() {
+                return this.username;
+            }
+
+            public void setAccess_token(String arg1) {
+                this.access_token = arg1;
+            }
+
+            public void setAvatarLarge(String arg1) {
+                this.avatarLarge = arg1;
+            }
+
+            public ThirdPartBean setBlogAddress(String arg1) {
+                this.blogAddress = arg1;
+                return this;
+            }
+
+            public void setExpiration_in(String arg1) {
+                this.expiration_in = arg1;
+            }
+
+            public void setOpenid(String arg1) {
+                this.openid = arg1;
+            }
+
+            public void setUsername(String arg1) {
+                this.username = arg1;
+            }
+        }
+
+        private ThirdPartBean github;
+        private ThirdPartBean wechat;
+        private ThirdPartBean weibo;
+
+        public CommunityBean() {
+            super();
+        }
+
+        public ThirdPartBean getGithub() {
+            return this.github;
+        }
+
+        public ThirdPartBean getWechat() {
+            return this.wechat;
+        }
+
+        public ThirdPartBean getWeibo() {
+            return this.weibo;
+        }
+
+        public CommunityBean setGithub(ThirdPartBean arg1) {
+            this.github = arg1;
+            return this;
+        }
+
+        public void setWechat(ThirdPartBean arg1) {
+            this.wechat = arg1;
+        }
+
+        public CommunityBean setWeibo(ThirdPartBean arg1) {
+            this.weibo = arg1;
+            return this;
+        }
+    }
+
+    public class UserRoles {
+        UserRole administratorAuthor;
+        UserRole bookAuthor;
+        UserRole builderAuthor;
+        UserRole favorableAuthor;
+
+        public UserRole getAdministratorAuthor() {
+            return this.administratorAuthor;
+        }
+
+        public UserRole getBookAuthor() {
+            return this.bookAuthor;
+        }
+
+        public UserRole getBuilderAuthor() {
+            return this.builderAuthor;
+        }
+
+        public UserRole getFavorableAuthor() {
+            return this.favorableAuthor;
+        }
+
+        public void setAdministratorAuthor(UserRole arg1) {
+            this.administratorAuthor = arg1;
+        }
+
+        public void setBookAuthor(UserRole arg1) {
+            this.bookAuthor = arg1;
+        }
+
+        public void setBuilderAuthor(UserRole arg1) {
+            this.builderAuthor = arg1;
+        }
+
+        public void setFavorableAuthor(UserRole arg1) {
+            this.favorableAuthor = arg1;
+        }
+    }
 
     private String avatarLarge;
-
     public String avatar_hd;
-
     private String avatar_large;
-
     private String blogAddress;
-
     private int collectedEntriesCount;
-
     private int collectionSetCount;
-
     private CommunityBean community;
-
     public String company;
-
     private Date createdAt;
-
     @JSONField(name = "currentUserFollowed")
     @Deprecated
     private boolean currentUserFollowed;
-
     private String email;
-
     private int followeesCount;
-
     private int followersCount;
-
     private String id;
-
     @JSONField(name = "isAuthor")
     public boolean isAuthor;
-
     @JSONField(name = "isFollowerFollowed")
     @Deprecated
     private boolean isFollowerFollowed;
-
     private boolean isSelect;
-
     @JSONField(name = "isUnitedAuthor")
     public boolean isUnitedAuthor;
-
     public String jobTitle;
-
     private int juejinPower;
-
     private int level;
-
     private int likedPinCount;
-
     private String mobilePhoneNumber;
-
     private boolean mobilePhoneVerified;
-
     @Deprecated
     public String objectId;
-
     private int pinCount;
-
     private int postedEntriesCount;
-
     private int postedPostsCount;
-
     private int purchasedBookletCount;
-
     public String role;
-
     private UserRoles roles;
-
     private boolean selectAll;
-
     @JSONField(name = "selfDescription")
     public String self_description;
-
     private String statisticCategory;
-
     private String statisticLocation;
-
     private int subscribedTagsCount;
-
     private int tagFollowCount;
-
     private String tagName;
-
     private int totalCollectionsCount;
-
     private int totalCommentsCount;
-
     private int totalViewsCount;
-
     private Date updatedAt;
-
     public String username;
-
     private int viewedEntriesCount;
-
     private boolean viewerIsFollowing;
 
     public UserBean() {
+        super();
     }
 
-    protected UserBean(Parcel paramParcel) {
-        boolean bool1;
-        Date date1;
-        long l = paramParcel.readLong();
-        Date date2 = null;
-        if (l == -1L) {
-            date1 = null;
+    protected UserBean(Parcel arg7) {
+        super();
+        long v0 = arg7.readLong();
+        Date v2 = null;
+        long v3 = -1;
+        Date v5 = v0 == v3 ? v2 : new Date(v0);
+        this.updatedAt = v5;
+        v0 = arg7.readLong();
+        if (v0 == v3) {
         } else {
-            date1 = new Date(l);
+            v2 = new Date(v0);
         }
-        this.updatedAt = date1;
-        l = paramParcel.readLong();
-        if (l == -1L) {
-            date1 = date2;
+
+        this.createdAt = v2;
+        this.username = arg7.readString();
+        this.avatar_hd = arg7.readString();
+        this.objectId = arg7.readString();
+        this.role = arg7.readString();
+        this.company = arg7.readString();
+        this.jobTitle = arg7.readString();
+        this.self_description = arg7.readString();
+        boolean v1 = true;
+        boolean v0_1 = arg7.readByte() != 0 ? true : false;
+        this.isFollowerFollowed = v0_1;
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.currentUserFollowed = v0_1;
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.viewerIsFollowing = v0_1;
+        this.avatar_large = arg7.readString();
+        this.avatarLarge = arg7.readString();
+        this.totalCollectionsCount = arg7.readInt();
+        this.totalCommentsCount = arg7.readInt();
+        this.viewedEntriesCount = arg7.readInt();
+        this.postedEntriesCount = arg7.readInt();
+        this.postedPostsCount = arg7.readInt();
+        this.collectedEntriesCount = arg7.readInt();
+        this.subscribedTagsCount = arg7.readInt();
+        this.collectionSetCount = arg7.readInt();
+        this.likedPinCount = arg7.readInt();
+        this.followeesCount = arg7.readInt();
+        this.followersCount = arg7.readInt();
+        this.tagFollowCount = arg7.readInt();
+        this.totalViewsCount = arg7.readInt();
+        this.pinCount = arg7.readInt();
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.isUnitedAuthor = v0_1;
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.isAuthor = v0_1;
+        this.blogAddress = arg7.readString();
+        this.mobilePhoneNumber = arg7.readString();
+        this.email = arg7.readString();
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.isSelect = v0_1;
+        v0_1 = arg7.readByte() != 0 ? true : false;
+        this.selectAll = v0_1;
+        this.tagName = arg7.readString();
+        this.id = arg7.readString();
+        this.level = arg7.readInt();
+        if (arg7.readByte() != 0) {
         } else {
-            date1 = new Date(l);
+            v1 = false;
         }
-        this.createdAt = date1;
-        this.username = paramParcel.readString();
-        this.avatar_hd = paramParcel.readString();
-        this.objectId = paramParcel.readString();
-        this.role = paramParcel.readString();
-        this.company = paramParcel.readString();
-        this.jobTitle = paramParcel.readString();
-        this.self_description = paramParcel.readString();
-        byte b = paramParcel.readByte();
-        boolean bool2 = true;
-        if (b != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.isFollowerFollowed = bool1;
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.currentUserFollowed = bool1;
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.viewerIsFollowing = bool1;
-        this.avatar_large = paramParcel.readString();
-        this.avatarLarge = paramParcel.readString();
-        this.totalCollectionsCount = paramParcel.readInt();
-        this.totalCommentsCount = paramParcel.readInt();
-        this.viewedEntriesCount = paramParcel.readInt();
-        this.postedEntriesCount = paramParcel.readInt();
-        this.postedPostsCount = paramParcel.readInt();
-        this.collectedEntriesCount = paramParcel.readInt();
-        this.subscribedTagsCount = paramParcel.readInt();
-        this.collectionSetCount = paramParcel.readInt();
-        this.likedPinCount = paramParcel.readInt();
-        this.followeesCount = paramParcel.readInt();
-        this.followersCount = paramParcel.readInt();
-        this.tagFollowCount = paramParcel.readInt();
-        this.totalViewsCount = paramParcel.readInt();
-        this.pinCount = paramParcel.readInt();
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.isUnitedAuthor = bool1;
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.isAuthor = bool1;
-        this.blogAddress = paramParcel.readString();
-        this.mobilePhoneNumber = paramParcel.readString();
-        this.email = paramParcel.readString();
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.isSelect = bool1;
-        if (paramParcel.readByte() != 0) {
-            bool1 = true;
-        } else {
-            bool1 = false;
-        }
-        this.selectAll = bool1;
-        this.tagName = paramParcel.readString();
-        this.id = paramParcel.readString();
-        this.level = paramParcel.readInt();
-        if (paramParcel.readByte() != 0) {
-            bool1 = bool2;
-        } else {
-            bool1 = false;
-        }
-        this.mobilePhoneVerified = bool1;
-        this.statisticCategory = paramParcel.readString();
-        this.statisticLocation = paramParcel.readString();
+
+        this.mobilePhoneVerified = v1;
+        this.statisticCategory = arg7.readString();
+        this.statisticLocation = arg7.readString();
     }
+
+    public static final Creator<UserBean> CREATOR = new Creator<UserBean>() {
+        @Override
+        public UserBean createFromParcel(Parcel in) {
+            return new UserBean(in);
+        }
+
+        @Override
+        public UserBean[] newArray(int size) {
+            return new UserBean[size];
+        }
+    };
 
     public int describeContents() {
         return 0;
     }
 
     public String getAvatarLarge() {
-        return !TextUtils.isEmpty(this.avatar_large) ? this.avatar_large : this.avatarLarge;
+        if (!TextUtils.isEmpty(this.avatar_large)) {
+            return this.avatar_large;
+        }
+
+        return this.avatarLarge;
     }
 
     @Deprecated
     public String getAvatar_hd() {
-        return TextUtils.isEmpty(this.avatar_hd) ? getAvatarLarge() : this.avatar_hd;
+        if (TextUtils.isEmpty(this.avatar_hd)) {
+            return this.getAvatarLarge();
+        }
+
+        return this.avatar_hd;
     }
 
     public String getBlogAddress() {
@@ -270,7 +349,11 @@ public class UserBean implements Parcelable, BeanType {
     }
 
     public String getId() {
-        return TextUtils.isEmpty(this.id) ? this.objectId : this.id;
+        if (TextUtils.isEmpty(this.id)) {
+            return this.objectId;
+        }
+
+        return this.id;
     }
 
     public String getJobTitle() {
@@ -299,7 +382,11 @@ public class UserBean implements Parcelable, BeanType {
 
     @Deprecated
     public String getObjectId() {
-        return TextUtils.isEmpty(this.objectId) ? this.id : this.objectId;
+        if (TextUtils.isEmpty(this.objectId)) {
+            return this.id;
+        }
+
+        return this.objectId;
     }
 
     public int getPinCount() {
@@ -391,346 +478,301 @@ public class UserBean implements Parcelable, BeanType {
     }
 
     public boolean isUserFollowed() {
-        return (this.viewerIsFollowing || this.isFollowerFollowed || this.currentUserFollowed);
+        boolean v0 = (this.viewerIsFollowing) || (this.isFollowerFollowed) || (this.currentUserFollowed) ? true : false;
+        return v0;
     }
 
     public boolean isViewerIsFollowing() {
         return this.viewerIsFollowing;
     }
 
-    public void setAvatarLarge(String paramString) {
-        this.avatarLarge = paramString;
-        this.avatar_large = paramString;
+    public void setAvatarLarge(String arg1) {
+        this.avatarLarge = arg1;
+        this.avatar_large = arg1;
     }
 
-    public void setAvatar_hd(String paramString) {
-        this.avatar_hd = paramString;
+    public void setAvatar_hd(String arg1) {
+        this.avatar_hd = arg1;
     }
 
-    public void setAvatar_large(String paramString) {
-        this.avatar_large = paramString;
-        this.avatarLarge = paramString;
+    public void setAvatar_large(String arg1) {
+        this.avatar_large = arg1;
+        this.avatarLarge = arg1;
     }
 
-    public void setBlogAddress(String paramString) {
-        this.blogAddress = paramString;
+    public void setBlogAddress(String arg1) {
+        this.blogAddress = arg1;
     }
 
-    public void setCollectedEntriesCount(int paramInt) {
-        this.collectedEntriesCount = paramInt;
+    public void setCollectedEntriesCount(int arg1) {
+        this.collectedEntriesCount = arg1;
     }
 
-    public UserBean setCollectionSetCount(int paramInt) {
-        this.collectionSetCount = paramInt;
+    public UserBean setCollectionSetCount(int arg1) {
+        this.collectionSetCount = arg1;
         return this;
     }
 
-    public UserBean setCommunity(CommunityBean paramCommunityBean) {
-        this.community = paramCommunityBean;
+    public UserBean setCommunity(CommunityBean arg1) {
+        this.community = arg1;
         return this;
     }
 
-    public void setCompany(String paramString) {
-        this.company = paramString;
+    public void setCompany(String arg1) {
+        this.company = arg1;
     }
 
-    public void setCreatedAt(Date paramDate) {
-        this.createdAt = paramDate;
+    public void setCreatedAt(Date arg1) {
+        this.createdAt = arg1;
     }
 
-    public void setCurrentUserFollowed(boolean paramBoolean) {
-        this.isFollowerFollowed = paramBoolean;
-        this.currentUserFollowed = paramBoolean;
+    public void setCurrentUserFollowed(boolean arg1) {
+        this.isFollowerFollowed = arg1;
+        this.currentUserFollowed = arg1;
     }
 
-    public void setEmail(String paramString) {
-        this.email = paramString;
+    public void setEmail(String arg1) {
+        this.email = arg1;
     }
 
-    public void setField(String paramString1, String paramString2) {
-        if (TextUtils.isEmpty(paramString1))
+    public void setField(String tag, String msg) {
+        if (TextUtils.isEmpty(tag)) {
             return;
-        byte b = -1;
-        switch (paramString1.hashCode()) {
-            case 1117620722:
-                if (paramString1.equals("blogAddress"))
-                    b = 4;
-                break;
-            case 950484093:
-                if (paramString1.equals("company"))
-                    b = 3;
-                break;
-            case 650056976:
-                if (paramString1.equals("selfDescription"))
-                    b = 5;
-                break;
-            case 379189602:
-                if (paramString1.equals("avatarLarge"))
-                    b = 0;
-                break;
-            case 96619420:
-                if (paramString1.equals("email"))
-                    b = 8;
-                break;
-            case -181110699:
-                if (paramString1.equals("mobilePhoneNumber"))
-                    b = 7;
-                break;
-            case -265713450:
-                if (paramString1.equals("username"))
-                    b = 1;
-                break;
-            case -576407339:
-                if (paramString1.equals("avatar_large"))
-                    b = 6;
-                break;
-            case -1625529189:
-                if (paramString1.equals("jobTitle"))
-                    b = 2;
-                break;
         }
-        switch (b) {
-            default:
-                return;
-            case 8:
-                setEmail(paramString2);
-                return;
-            case 7:
-                setMobilePhoneNumber(paramString2);
-                return;
-            case 6:
-                setAvatar_large(paramString2);
-                return;
-            case 5:
-                setSelf_description(paramString2);
-                return;
-            case 4:
-                setBlogAddress(paramString2);
-                return;
-            case 3:
-                setCompany(paramString2);
-                return;
-            case 2:
-                setJobTitle(paramString2);
-                return;
-            case 1:
-                setUsername(paramString2);
-                return;
-            case 0:
+
+        switch (tag) {
+            case "avatarLarge": {
+                this.setAvatarLarge(msg);
                 break;
+            }
+            case "username": {
+                this.setUsername(msg);
+                break;
+            }
+            case "jobTitle": {
+                this.setJobTitle(msg);
+                break;
+            }
+            case "company": {
+                this.setCompany(msg);
+                break;
+            }
+            case "blogAddress": {
+                this.setBlogAddress(msg);
+                break;
+            }
+            case "selfDescription": {
+                this.setSelf_description(msg);
+                break;
+            }
+            case "avatar_large": {
+                this.setAvatar_large(msg);
+                break;
+            }
+            case "mobilePhoneNumber": {
+                this.setMobilePhoneNumber(msg);
+                break;
+            }
+            case "email": {
+                this.setEmail(msg);
+                break;
+            }
+            default: {
+                break;
+            }
         }
-        setAvatarLarge(paramString2);
     }
 
-    public void setFolloweesCount(int paramInt) {
-        this.followeesCount = paramInt;
+    public void setFolloweesCount(int arg1) {
+        this.followeesCount = arg1;
     }
 
-    public void setFollowerFollowed(boolean paramBoolean) {
-        this.isFollowerFollowed = paramBoolean;
-        this.currentUserFollowed = paramBoolean;
+    public void setFollowerFollowed(boolean arg1) {
+        this.isFollowerFollowed = arg1;
+        this.currentUserFollowed = arg1;
     }
 
-    public void setFollowersCount(int paramInt) {
-        this.followersCount = paramInt;
+    public void setFollowersCount(int arg1) {
+        this.followersCount = arg1;
     }
 
-    public void setId(String paramString) {
-        this.id = paramString;
+    public void setId(String arg1) {
+        this.id = arg1;
     }
 
-    public void setJobTitle(String paramString) {
-        this.jobTitle = paramString;
+    public void setJobTitle(String arg1) {
+        this.jobTitle = arg1;
     }
 
-    public void setJuejinPower(int paramInt) {
-        this.juejinPower = paramInt;
+    public void setJuejinPower(int arg1) {
+        this.juejinPower = arg1;
     }
 
-    public void setLevel(int paramInt) {
-        this.level = paramInt;
+    public void setLevel(int arg1) {
+        this.level = arg1;
     }
 
-    public void setLikedPinCount(int paramInt) {
-        this.likedPinCount = paramInt;
+    public void setLikedPinCount(int arg1) {
+        this.likedPinCount = arg1;
     }
 
-    public void setMobilePhoneNumber(String paramString) {
-        this.mobilePhoneNumber = paramString;
+    public void setMobilePhoneNumber(String arg1) {
+        this.mobilePhoneNumber = arg1;
     }
 
-    public void setMobilePhoneVerified(boolean paramBoolean) {
-        this.mobilePhoneVerified = paramBoolean;
+    public void setMobilePhoneVerified(boolean arg1) {
+        this.mobilePhoneVerified = arg1;
     }
 
-    public void setObjectId(String paramString) {
-        this.objectId = paramString;
+    public void setObjectId(String arg1) {
+        this.objectId = arg1;
     }
 
-    public void setPinCount(int paramInt) {
-        this.pinCount = paramInt;
+    public void setPinCount(int arg1) {
+        this.pinCount = arg1;
     }
 
-    public void setPostedEntriesCount(int paramInt) {
-        this.postedEntriesCount = paramInt;
+    public void setPostedEntriesCount(int arg1) {
+        this.postedEntriesCount = arg1;
     }
 
-    public UserBean setPostedPostsCount(int paramInt) {
-        this.postedPostsCount = paramInt;
+    public UserBean setPostedPostsCount(int arg1) {
+        this.postedPostsCount = arg1;
         return this;
     }
 
-    public void setPurchasedBookletCount(int paramInt) {
-        this.purchasedBookletCount = paramInt;
+    public void setPurchasedBookletCount(int arg1) {
+        this.purchasedBookletCount = arg1;
     }
 
-    public void setRole(String paramString) {
-        this.role = paramString;
+    public void setRole(String arg1) {
+        this.role = arg1;
     }
 
-    public void setRoles(UserRoles paramUserRoles) {
-        this.roles = paramUserRoles;
+    public void setRoles(UserRoles arg1) {
+        this.roles = arg1;
     }
 
-    public void setSelect(boolean paramBoolean) {
-        this.isSelect = paramBoolean;
+    public void setSelect(boolean arg1) {
+        this.isSelect = arg1;
     }
 
-    public void setSelectAll(boolean paramBoolean) {
-        this.selectAll = paramBoolean;
+    public void setSelectAll(boolean arg1) {
+        this.selectAll = arg1;
     }
 
-    public void setSelf_description(String paramString) {
-        this.self_description = paramString;
+    public void setSelf_description(String arg1) {
+        this.self_description = arg1;
     }
 
-    public void setStatisticCategory(String paramString) {
-        this.statisticCategory = paramString;
+    public void setStatisticCategory(String arg1) {
+        this.statisticCategory = arg1;
     }
 
-    public void setStatisticLocation(String paramString) {
-        this.statisticLocation = paramString;
+    public void setStatisticLocation(String arg1) {
+        this.statisticLocation = arg1;
     }
 
-    public void setSubscribedTagsCount(int paramInt) {
-        this.subscribedTagsCount = paramInt;
+    public void setSubscribedTagsCount(int arg1) {
+        this.subscribedTagsCount = arg1;
     }
 
-    public void setTagFollowCount(int paramInt) {
-        this.tagFollowCount = paramInt;
+    public void setTagFollowCount(int arg1) {
+        this.tagFollowCount = arg1;
     }
 
-    public void setTagName(String paramString) {
-        this.tagName = paramString;
+    public void setTagName(String arg1) {
+        this.tagName = arg1;
     }
 
-    public UserBean setTotalCollectionsCount(int paramInt) {
-        this.totalCollectionsCount = paramInt;
+    public UserBean setTotalCollectionsCount(int arg1) {
+        this.totalCollectionsCount = arg1;
         return this;
     }
 
-    public UserBean setTotalCommentsCount(int paramInt) {
-        this.totalCommentsCount = paramInt;
+    public UserBean setTotalCommentsCount(int arg1) {
+        this.totalCommentsCount = arg1;
         return this;
     }
 
-    public void setTotalViewsCount(int paramInt) {
-        this.totalViewsCount = paramInt;
+    public void setTotalViewsCount(int arg1) {
+        this.totalViewsCount = arg1;
     }
 
-    public void setUpdatedAt(Date paramDate) {
-        this.updatedAt = paramDate;
+    public void setUpdatedAt(Date arg1) {
+        this.updatedAt = arg1;
     }
 
-    public void setUsername(String paramString) {
-        this.username = paramString;
+    public void setUsername(String arg1) {
+        this.username = arg1;
     }
 
-    public UserBean setViewedEntriesCount(int paramInt) {
-        this.viewedEntriesCount = paramInt;
+    public UserBean setViewedEntriesCount(int arg1) {
+        this.viewedEntriesCount = arg1;
         return this;
     }
 
-    public void setViewerIsFollowing(boolean paramBoolean) {
-        this.viewerIsFollowing = paramBoolean;
+    public void setViewerIsFollowing(boolean arg1) {
+        this.viewerIsFollowing = arg1;
     }
 
     public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("UserBean{, username='");
-        stringBuilder.append(this.username);
-        stringBuilder.append('\'');
-        stringBuilder.append(", avatar_hd='");
-        stringBuilder.append(this.avatar_hd);
-        stringBuilder.append('\'');
-        stringBuilder.append(", objectId='");
-        stringBuilder.append(this.objectId);
-        stringBuilder.append('\'');
-        stringBuilder.append(", company='");
-        stringBuilder.append(this.company);
-        stringBuilder.append('\'');
-        stringBuilder.append(", jobTitle='");
-        stringBuilder.append(this.jobTitle);
-        stringBuilder.append('\'');
-        stringBuilder.append(", self_description='");
-        stringBuilder.append(this.self_description);
-        stringBuilder.append('\'');
-        stringBuilder.append(", totalCollectionsCount=");
-        stringBuilder.append(this.totalCollectionsCount);
-        stringBuilder.append(", totalCommentsCount=");
-        stringBuilder.append(this.totalCommentsCount);
-        stringBuilder.append(", viewedEntriesCount=");
-        stringBuilder.append(this.viewedEntriesCount);
-        stringBuilder.append(", postedEntriesCount=");
-        stringBuilder.append(this.postedEntriesCount);
-        stringBuilder.append(", postedPostsCount=");
-        stringBuilder.append(this.postedPostsCount);
-        stringBuilder.append(", collectedEntriesCount=");
-        stringBuilder.append(this.collectedEntriesCount);
-        stringBuilder.append(", subscribedTagsCount=");
-        stringBuilder.append(this.subscribedTagsCount);
-        stringBuilder.append(", collectionSetCount=");
-        stringBuilder.append(this.collectionSetCount);
-        stringBuilder.append(", followeesCount=");
-        stringBuilder.append(this.followeesCount);
-        stringBuilder.append(", followersCount=");
-        stringBuilder.append(this.followersCount);
-        stringBuilder.append(", tagFollowCount=");
-        stringBuilder.append(this.tagFollowCount);
-        stringBuilder.append(", totalViewsCount=");
-        stringBuilder.append(this.totalViewsCount);
-        stringBuilder.append(", likedPinCount=");
-        stringBuilder.append(this.likedPinCount);
-        stringBuilder.append(", pinCount=");
-        stringBuilder.append(this.pinCount);
-        stringBuilder.append(", isUnitedAuthor=");
-        stringBuilder.append(this.isUnitedAuthor);
-        stringBuilder.append(", isAuthor=");
-        stringBuilder.append(this.isAuthor);
-        stringBuilder.append(", blogAddress='");
-        stringBuilder.append(this.blogAddress);
-        stringBuilder.append('\'');
-        stringBuilder.append(", mobilePhoneNumber='");
-        stringBuilder.append(this.mobilePhoneNumber);
-        stringBuilder.append('\'');
-        stringBuilder.append(", email='");
-        stringBuilder.append(this.email);
-        stringBuilder.append('\'');
-        stringBuilder.append(", community=");
-        stringBuilder.append(this.community);
-        stringBuilder.append(", id='");
-        stringBuilder.append(this.id);
-        stringBuilder.append('\'');
-        stringBuilder.append('}');
-        return stringBuilder.toString();
+        return "UserBean{, username=\'" + this.username + '\'' + ", avatar_hd=\'" + this.avatar_hd + '\'' + ", objectId=\'" + this.objectId + '\'' + ", company=\'" + this.company + '\'' + ", jobTitle=\'" + this.jobTitle + '\'' + ", self_description=\'" + this.self_description + '\'' + ", totalCollectionsCount=" + this.totalCollectionsCount + ", totalCommentsCount=" + this.totalCommentsCount + ", viewedEntriesCount=" + this.viewedEntriesCount + ", postedEntriesCount=" + this.postedEntriesCount + ", postedPostsCount=" + this.postedPostsCount + ", collectedEntriesCount=" + this.collectedEntriesCount + ", subscribedTagsCount=" + this.subscribedTagsCount + ", collectionSetCount=" + this.collectionSetCount + ", followeesCount=" + this.followeesCount + ", followersCount=" + this.followersCount + ", tagFollowCount=" + this.tagFollowCount + ", totalViewsCount=" + this.totalViewsCount + ", likedPinCount=" + this.likedPinCount + ", pinCount=" + this.pinCount + ", isUnitedAuthor=" + this.isUnitedAuthor + ", isAuthor=" + this.isAuthor + ", blogAddress=\'" + this.blogAddress + '\'' + ", mobilePhoneNumber=\'" + this.mobilePhoneNumber + '\'' + ", email=\'" + this.email + '\'' + ", community=" + this.community + ", id=\'" + this.id + '\'' + '}';
     }
 
-    public int type(ITypeFactoryList paramITypeFactoryList) {
-        return paramITypeFactoryList.type((BeanType) this);
+    public int type(ITypeFactoryList arg1) {
+        return arg1.type(((BeanType) this));
     }
 
-    public void writeToParcel(Parcel paramParcel, int paramInt) {
-        throw new RuntimeException("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\n");
-    }
+    public void writeToParcel(Parcel arg5, int arg6) {
+        Date v6 = this.updatedAt;
+        long v0 = -1;
+        long v2 = v6 != null ? v6.getTime() : v0;
+        arg5.writeLong(v2);
+        v6 = this.createdAt;
+        if (v6 != null) {
+            v0 = v6.getTime();
+        }
 
+        arg5.writeLong(v0);
+        arg5.writeString(this.username);
+        arg5.writeString(this.avatar_hd);
+        arg5.writeString(this.objectId);
+        arg5.writeString(this.role);
+        arg5.writeString(this.company);
+        arg5.writeString(this.jobTitle);
+        arg5.writeString(this.self_description);
+        arg5.writeBoolean(this.isFollowerFollowed);
+        arg5.writeBoolean(this.currentUserFollowed);
+        arg5.writeBoolean(this.viewerIsFollowing);
+        arg5.writeString(this.avatar_large);
+        arg5.writeString(this.avatarLarge);
+        arg5.writeInt(this.totalCollectionsCount);
+        arg5.writeInt(this.totalCommentsCount);
+        arg5.writeInt(this.viewedEntriesCount);
+        arg5.writeInt(this.postedEntriesCount);
+        arg5.writeInt(this.postedPostsCount);
+        arg5.writeInt(this.collectedEntriesCount);
+        arg5.writeInt(this.subscribedTagsCount);
+        arg5.writeInt(this.collectionSetCount);
+        arg5.writeInt(this.likedPinCount);
+        arg5.writeInt(this.followeesCount);
+        arg5.writeInt(this.followersCount);
+        arg5.writeInt(this.tagFollowCount);
+        arg5.writeInt(this.totalViewsCount);
+        arg5.writeInt(this.pinCount);
+        arg5.writeBoolean(this.isUnitedAuthor);
+        arg5.writeBoolean(this.isAuthor);
+        arg5.writeString(this.blogAddress);
+        arg5.writeString(this.mobilePhoneNumber);
+        arg5.writeString(this.email);
+        arg5.writeBoolean(this.isSelect);
+        arg5.writeBoolean(this.selectAll);
+        arg5.writeString(this.tagName);
+        arg5.writeString(this.id);
+        arg5.writeInt(this.level);
+        arg5.writeBoolean(this.mobilePhoneVerified);
+        arg5.writeString(this.statisticCategory);
+        arg5.writeString(this.statisticLocation);
+    }
 }

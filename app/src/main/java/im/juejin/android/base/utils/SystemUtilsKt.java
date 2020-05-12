@@ -10,7 +10,6 @@ import android.view.View;
 
 import java.util.Locale;
 
-import kotlin.TypeCastException;
 import kotlin.jvm.internal.Intrinsics;
 
 public class SystemUtilsKt {
@@ -43,11 +42,6 @@ public class SystemUtilsKt {
         return stringBuilder.toString();
     }
 
-    public static final void hideSoftInput(View paramView) {
-        if (paramView == null)
-            return;
-        paramView.postDelayed(new SystemUtilsKt$hideSoftInput$1(paramView), 200L);
-    }
 
     public static final boolean isCNorTW(Context paramContext) {
         Intrinsics.checkNotNullParameter(paramContext, "context");
@@ -70,43 +64,15 @@ public class SystemUtilsKt {
     }
 
     public static final void showSoftInput(View paramView) {
-        if (paramView == null)
-            return;
-        paramView.postDelayed(new SystemUtilsKt$showSoftInput$1(paramView), 200L);
+        //TODO not impl
+        AppLogger.d("showSoftInput not impl");
     }
 
-    static final class SystemUtilsKt$hideSoftInput$1 implements Runnable {
-        SystemUtilsKt$hideSoftInput$1(View param1View) {
-        }
 
-        public final void run() {
-            Context context = this.$view.getContext();
-            Intrinsics.checkNotNull(context, "view.context");
-            Object object = context.getApplicationContext().getSystemService("input_method");
-            if (object != null) {
-                if (object != null)
-                    object.hideSoftInputFromWindow(this.$view.getWindowToken(), 0);
-                return;
-            }
-            throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-        }
+    public static final void hideSoftInput(View paramView) {
+        //TODO not impl
+        AppLogger.d("hideSoftInput not impl");
+
     }
 
-    static final class SystemUtilsKt$showSoftInput$1 implements Runnable {
-        SystemUtilsKt$showSoftInput$1(View param1View) {
-        }
-
-        public final void run() {
-            Context context = this.$view.getContext();
-            Intrinsics.checkNotNull(context, "view.context");
-            Object object = context.getApplicationContext().getSystemService("input_method");
-            if (object != null) {
-                object = object;
-                if (object != null)
-                    object.showSoftInput(this.$view, 0);
-                return;
-            }
-            throw new TypeCastException("null cannot be cast to non-null type android.view.inputmethod.InputMethodManager");
-        }
-    }
 }

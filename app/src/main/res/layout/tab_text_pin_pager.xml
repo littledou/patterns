@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/pin_tab_text_selector" android:gravity="center" android:id="@id/tv_title" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:layout_gravity="right" android:id="@id/red_point" android:background="@drawable/red_point" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginTop="14.0dip" />
+</FrameLayout>

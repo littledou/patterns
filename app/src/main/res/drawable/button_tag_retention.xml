@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector android:enterFadeDuration="200" android:exitFadeDuration="200"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape>
+            <corners android:radius="40.0dip" />
+            <solid android:color="@color/juejin_blue" />
+        </shape>
+    </item>
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/juejin_blue" />
+            <corners android:radius="40.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="40.0dip" />
+            <stroke android:width="0.9dip" android:color="#ffdddddd" />
+        </shape>
+    </item>
+</selector>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector android:enterFadeDuration="@android:integer/config_shortAnimTime" android:exitFadeDuration="@android:integer/config_shortAnimTime"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#15000000" />
+            <stroke android:width="1.0px" android:color="#0d3d5566" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#03000000" />
+            <stroke android:width="1.0px" android:color="#243d5566" />
+        </shape>
+    </item>
+</selector>

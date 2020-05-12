@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:id="@id/ll_rank" android:paddingBottom="@dimen/search_view_height" android:layout_width="wrap_content" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.view.ViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="48.0dip" />
+    <RelativeLayout android:id="@id/layout_search" android:background="?colorPrimary" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="#88ffffff" android:gravity="center_vertical" android:id="@id/tv_search" android:background="@drawable/search_text_selector" android:paddingLeft="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="搜索文章、用户、标签" android:drawableLeft="@drawable/tab_home_find_search" android:drawablePadding="10.0dip" />
+    </RelativeLayout>
+    <im.juejin.android.base.views.layouts.TipView android:id="@id/tipView" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

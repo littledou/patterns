@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?themeWhiteBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/layout_info" android:layout_width="fill_parent" android:layout_height="128.0dip" android:layout_marginTop="10.0dip">
+        <ImageView android:id="@id/iv_cover" android:background="@drawable/common_loading" android:layout_width="64.29999dip" android:layout_height="90.0dip" android:layout_marginLeft="13.0dip" android:layout_marginTop="14.0dip" android:scaleType="centerCrop" />
+        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="?themeTextColor1" android:id="@id/tv_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="88.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="14.0dip" android:lineSpacingExtra="3.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="?themeTextColor1" android:ellipsize="end" android:gravity="bottom" android:id="@id/tv_author" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="88.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="14.0dip" android:singleLine="true" android:layout_below="@id/tv_title" />
+    </RelativeLayout>
+    <include android:layout_width="fill_parent" android:layout_height="0.5dip" layout="@layout/line_horizontal" />
+    <android.support.v7.widget.RecyclerView android:id="@id/recyclerView_chapter" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/layout_info" />
+</LinearLayout>

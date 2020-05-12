@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:orientation="vertical" android:id="@id/scrollView" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <WebView android:id="@id/webview_about" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/shadow_line_webview_top" />
+        <com.daimajia.numberprogressbar.NumberProgressBar android:id="@id/progressbar" android:layout_width="fill_parent" android:layout_height="1.5dip" />
+    </RelativeLayout>
+</FrameLayout>

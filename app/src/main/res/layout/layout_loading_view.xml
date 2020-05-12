@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/layout_loading" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.widget.ContentLoadingProgressBar android:layout_gravity="center" android:id="@id/loading_bar" android:background="#00ffffff" android:visibility="visible" android:layout_width="32.0dip" android:layout_height="32.0dip" style="?android:progressBarStyle" />
+</FrameLayout>

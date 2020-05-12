@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/layout_open_push" android:layout_width="fill_parent" android:layout_height="93.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:background="?themeContentBackgroundColor" android:layout_width="fill_parent" android:layout_height="65.0dip">
+        <TextView android:textSize="15.0sp" android:textColor="?themeTextColor1" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="100.0dip" android:text="打开推送通知" />
+        <TextView android:textSize="13.0sp" android:textColor="?themeTextColor3" android:gravity="center_vertical" android:paddingLeft="20.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="30.0dip" android:layout_marginRight="100.0dip" android:text="不再错过重要消息，第一时间收到提醒" />
+        <TextView android:textSize="15.0sp" android:textColor="@color/juejin_blue" android:gravity="center" android:layout_gravity="center|right" android:id="@id/tv_open_push" android:layout_width="70.0dip" android:layout_height="fill_parent" android:text="开启" />
+    </FrameLayout>
+</FrameLayout>

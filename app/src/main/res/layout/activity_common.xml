@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="?themeWindowBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.juejin.android.base.views.statusbar.StatusBarView android:id="@id/view_statusbar" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/toolbar" />
+    <im.juejin.android.base.views.statusbar.FixInsetsFrameLayout android:id="@id/fragment_container" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

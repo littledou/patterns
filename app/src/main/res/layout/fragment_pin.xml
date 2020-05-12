@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="?themeWindowBackgroundColor" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v4.widget.SwipeRefreshLayout android:id="@id/pager_page" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rl_title">
+        <android.support.v7.widget.RecyclerView android:id="@id/recyclerview_content" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fadeScrollbars="true" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <im.juejin.android.base.views.layouts.TipView android:id="@id/tipView" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/view_shadow" layout="@layout/include_fragment_shadow" />
+</RelativeLayout>

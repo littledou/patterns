@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut android:icon="@drawable/ic_shortcut_explorer_hot" android:shortcutId="week_hot" android:shortcutShortLabel="@string/shortcut_week_hot" android:shortcutLongLabel="@string/shortcut_week_hot">
+        <intent android:targetPackage="com.daimajia.gold" android:action="com.daimajia.gold.WEEK_HOT" android:targetClass="im.juejin.android.hull.activity.ShortcutJumpActivity" />
+    </shortcut>
+    <shortcut android:icon="@drawable/ic_shortcut_explore" android:shortcutId="explore" android:shortcutShortLabel="@string/shortcut_explore" android:shortcutLongLabel="@string/shortcut_explore">
+        <intent android:targetPackage="com.daimajia.gold" android:action="com.daimajia.gold.EXPLORE" android:targetClass="im.juejin.android.hull.activity.ShortcutJumpActivity" />
+    </shortcut>
+    <shortcut android:icon="@drawable/ic_shortcut_search" android:shortcutId="search" android:shortcutShortLabel="@string/shortcut_search" android:shortcutLongLabel="@string/shortcut_search">
+        <intent android:targetPackage="com.daimajia.gold" android:action="com.daimajia.gold.SEARCH" android:targetClass="im.juejin.android.hull.activity.ShortcutJumpActivity" />
+    </shortcut>
+</shortcuts>

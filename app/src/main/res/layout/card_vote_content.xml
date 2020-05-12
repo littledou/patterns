@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/card_entry" android:background="?themeContentBackgroundColor" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/vote_screenshot_height">
+        <ImageView android:id="@id/screenshot" android:background="@color/black" android:layout_width="fill_parent" android:layout_height="@dimen/vote_screenshot_height" android:scaleType="centerCrop" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="@dimen/vote_screenshot_height" android:src="#88000000" />
+        <RelativeLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/rl_part_in" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="18.0dip">
+            <im.juejin.android.base.views.widgets.CombinationImageView android:layout_gravity="bottom" android:id="@id/civ_user" android:layout_width="200.0dip" android:layout_height="35.0dip" android:layout_marginLeft="-16.0dip" android:layout_toRightOf="@id/tv_vote_partner" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="bottom|center|left" android:id="@id/tv_vote_partner" android:background="@drawable/vote_member_count_background" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:layout_width="wrap_content" android:layout_height="35.0dip" android:minWidth="130.0dip" android:text="0人已参加" android:drawableLeft="@drawable/feidian_icon_white" android:drawablePadding="5.0dip" />
+        </RelativeLayout>
+    </FrameLayout>
+    <LinearLayout android:orientation="vertical" android:paddingTop="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="?themeTextColor1" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/title" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:maxLines="2" />
+        <TextView android:textSize="9.0sp" android:textColor="?themeTextColor3" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/date" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0sp" android:textColor="?themeTextColor2" android:ellipsize="end" android:gravity="start|center|top" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_marginBottom="5.0dip" android:maxLines="5" android:layout_below="@id/rl_title" android:lineSpacingExtra="3.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:layout_below="@id/content">
+            <TextView android:textSize="10.0sp" android:textColor="?themeTextColor3" android:gravity="center" android:id="@id/tv_date" android:paddingTop="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/f_d_time" android:drawablePadding="2.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="?themeTextColor3" android:gravity="center" android:id="@id/tv_view_count" android:paddingTop="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:drawableLeft="@drawable/f_d_eye" android:drawablePadding="2.0dip" />
+        </LinearLayout>
+        <View android:background="?themeWindowBackgroundColor" android:layout_width="fill_parent" android:layout_height="9.0dip" android:layout_marginTop="6.299988dip" />
+        <RelativeLayout android:paddingLeft="15.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="?themeTextColor2" android:gravity="center" android:id="@id/tv_comment_count" android:paddingTop="3.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:drawablePadding="2.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/vote_text_selector" android:gravity="center" android:id="@id/tv_sort_like" android:background="@drawable/layout_selector_transparent" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="最热" android:layout_toLeftOf="@id/tv_sort_time" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/vote_text_selector" android:gravity="center" android:id="@id/tv_sort_time" android:background="@drawable/layout_selector_transparent" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="最新" android:layout_alignParentRight="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

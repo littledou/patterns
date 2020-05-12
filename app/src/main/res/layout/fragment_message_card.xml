@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="#ff333333" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:id="@id/fl_container" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="100.0dip" />
+    <LinearLayout android:background="#ffeeeeee" android:layout_alignParentBottom="true" style="@style/ShareDialogLayout">
+        <LinearLayout android:id="@id/ll_wx" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_wechat" style="@style/ShareDialogItemImage" />
+            <TextView android:text="微信" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ll_wx_circle" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_circle" style="@style/ShareDialogItemImage" />
+            <TextView android:text="朋友圈" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ll_qq" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_qq" style="@style/ShareDialogItemImage" />
+            <TextView android:text="QQ" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ll_weibo" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_weibo" style="@style/ShareDialogItemImage" />
+            <TextView android:text="微博" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ll_save" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_save" style="@style/ShareDialogItemImage" />
+            <TextView android:text="保存" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+        <LinearLayout android:id="@id/ll_other" android:layout_weight="1.0" style="@style/ShareDialogItemLayout">
+            <ImageView android:src="@drawable/share_others" style="@style/ShareDialogItemImage" />
+            <TextView android:text="其他" style="@style/ShareDialogItemText" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

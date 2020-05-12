@@ -1,8 +1,9 @@
-include ':Alg'
-include ':aac'
-//include ':app'
+//include ':Alg'
+//include ':aac'
+include ':app'
 
 //include ':pattern',':easynet', ':threadpool'
 
 //include  ':cameraxuse', ':MutilThread', ':shellapk', ':pluginapk', ':aac', ':sample'
-include ':camerax'
+//include ':camerax'
+//include ':testLibrary'

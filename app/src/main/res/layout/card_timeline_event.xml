@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/card_entry" android:background="?themeContentBackgroundColor" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/timeline_entry_extra" />
+    <include layout="@layout/item_entry_detail" />
+    <TextView android:textSize="14.0sp" android:textColor="?themeTextColor3" android:gravity="center_vertical" android:id="@id/tv_apply" android:paddingLeft="12.0dip" android:layout_width="120.0dip" android:layout_height="32.0dip" android:text="立即报名" android:drawableLeft="@drawable/ic_apply" android:drawablePadding="2.0dip" />
+    <android.support.v4.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <include layout="@layout/layout_divide_item" />
+</LinearLayout>

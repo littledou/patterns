@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/bs_collection_set" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <im.juejin.android.base.views.layouts.TipView android:id="@id/tip_view" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/rl_title" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <TextView android:textSize="16.0sp" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/collection_set_add" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/juejin_blue" android:id="@id/tv_create_collection_set" android:background="?android:selectableItemBackground" android:paddingLeft="16.0dip" android:paddingTop="12.0dip" android:paddingRight="16.0dip" android:paddingBottom="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/collection_set_create" android:layout_alignParentRight="true" />
+        <include android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_alignParentBottom="true" layout="@layout/line_horizontal" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView android:id="@id/rv_collection_set" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/rl_title" />
+</RelativeLayout>

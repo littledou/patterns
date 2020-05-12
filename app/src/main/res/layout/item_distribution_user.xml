@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="horizontal" android:id="@id/editor_layout" android:layout_width="wrap_content" android:layout_height="72.0dip" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <de.hdodenhof.circleimageview.CircleImageView android:id="@id/avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="16.0dip" android:src="@drawable/default_avatar" android:layout_centerVertical="true" />
+    <LinearLayout android:textSize="16.0sp" android:textColor="#ff000000" android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="10.0dip" android:layout_marginRight="5.0dip" android:layout_toLeftOf="@id/layout_follow" android:layout_toRightOf="@id/avatar" android:layout_marginStart="10.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/text_dark1" android:layout_gravity="center_vertical" android:id="@id/name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:maxWidth="150.0dip" android:singleLine="true" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_dark1" android:ellipsize="end" android:id="@id/description" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:maxWidth="200.0dip" android:text="邀请您一起读小册" android:singleLine="true" />
+    </LinearLayout>
+</RelativeLayout>

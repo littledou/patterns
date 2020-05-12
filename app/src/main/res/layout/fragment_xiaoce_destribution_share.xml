@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/frame_layout" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/image" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <include layout="@layout/item_distribution_user" />
+        <ImageView android:id="@id/iv_qr_code" android:visibility="visible" android:layout_width="86.0dip" android:layout_height="86.0dip" android:layout_marginRight="30.0dip" android:layout_alignParentRight="true" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/white" android:ellipsize="marquee" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/header_tip" android:background="@drawable/rect_blue_radius" android:paddingLeft="13.0dip" android:paddingTop="6.0dip" android:paddingRight="13.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="" android:singleLine="true" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</ScrollView>

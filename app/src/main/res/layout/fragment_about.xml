@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/rl_update" style="@style/SettingLayout">
+            <TextView android:text="检查更新" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <RelativeLayout android:id="@id/rl_about" style="@style/SettingLayout">
+            <TextView android:text="关于掘金" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <RelativeLayout android:id="@id/rl_market" style="@style/SettingLayout">
+            <TextView android:text="去应用市场为我们评分" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <RelativeLayout android:id="@id/rl_share" style="@style/SettingLayout">
+            <TextView android:text="分享掘金给好友" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <RelativeLayout android:id="@id/rl_agreement" style="@style/SettingLayout">
+            <TextView android:text="用户协议" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <RelativeLayout android:id="@id/rl_privacy" style="@style/SettingLayout">
+            <TextView android:text="隐私政策" style="@style/SettingText" />
+        </RelativeLayout>
+        <include layout="@layout/line_horizontal" />
+        <TextView android:textSize="14.0sp" android:textColor="#ffa1a1a1" android:gravity="center" android:id="@id/tv_version" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="掘金APP" />
+    </LinearLayout>
+    <include layout="@layout/include_fragment_shadow" />
+</FrameLayout>

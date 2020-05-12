@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/fl_toolbar" android:layout_width="fill_parent" android:layout_height="?actionBarSize"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.Toolbar android:id="@id/toolbar" android:background="?colorPrimary" android:layout_width="fill_parent" android:layout_height="?actionBarSize" android:minHeight="56.0dip" app:popupTheme="@style/Theme.AppCompat.Light.NoActionBar" app:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    <ImageView android:layout_gravity="center|right" android:id="@id/iv_menu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="?actionBarSize" android:layout_marginRight="10.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="?themeToolbarTextColor" android:gravity="center" android:layout_gravity="center|right" android:id="@id/tv_menu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="?actionBarSize" android:layout_marginRight="10.0dip" android:text="菜单" />
+</FrameLayout>

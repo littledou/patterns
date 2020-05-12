@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/card_entry" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:id="@id/view_header_divide" layout="@layout/layout_divide_item" />
+    <ImageView android:id="@id/screenshot" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/screenshot_height" android:scaleType="centerCrop" />
+    <RelativeLayout android:background="?themeContentBackgroundColor" android:paddingLeft="12.0dip" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="@color/blue_primary" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/title" android:layout_width="100.0dip" android:layout_height="fill_parent" android:layout_marginRight="6.0dip" android:text="热门推荐" android:maxLines="1" android:drawableLeft="@drawable/ic_hot_home" android:drawablePadding="6.0dip" android:layout_toLeftOf="@id/tv_entry_board" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+        <ImageView android:id="@id/rl_close" android:background="@drawable/layout_selector_unbound" android:padding="14.0dip" android:visibility="gone" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:src="@drawable/ic_hot_home_close" android:layout_alignParentRight="true" />
+        <TextView android:textSize="14.0sp" android:gravity="center_vertical" android:id="@id/tv_entry_board" android:paddingRight="16.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="文章榜" android:drawableRight="@drawable/arrow_panel" android:drawablePadding="6.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ll_entries" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:id="@id/rl_entry_first" layout="@layout/item_entry_hot" />
+        <include android:id="@id/rl_entry_second" layout="@layout/item_entry_hot" />
+        <include android:id="@id/rl_entry_third" layout="@layout/item_entry_hot" />
+    </LinearLayout>
+    <include layout="@layout/layout_divide_item" />
+</LinearLayout>

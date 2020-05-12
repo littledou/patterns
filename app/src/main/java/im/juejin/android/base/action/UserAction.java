@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSON;
 
 import im.juejin.android.base.utils.SpUtils;
 import im.juejin.android.base.utils.TextUtil;
-import im.juejin.android.componentbase.model.UserBean;
 import kotlin.jvm.internal.Intrinsics;
 
 public class UserAction {
